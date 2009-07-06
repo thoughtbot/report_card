@@ -1,1 +1,16 @@
 Metrics generation run by giant robots.
+
+Some brainstorming...
+
+p = Pythagoras.new
+p.run
+
+def run
+  generate
+  record
+  report if success?
+end
+
+Rakefile
+lib/pythagoras.rb
+spec/py_spec.rb
