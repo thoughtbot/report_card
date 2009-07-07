@@ -162,7 +162,7 @@ class RunnerTest < Test::Unit::TestCase
         @report = YAML.load_file(File.expand_path(File.join(__FILE__, "..", "fixtures", "report.yml")))
         stub(YAML).load_file(File.join(MetricFu.base_directory, "report.yml")) { @report }
         stub(File).exist?(anything) { false }
-        stub(FileUtils).mkdir(anything)
+        stub(FileUtils).mkdir_p(anything)
         stub(File).open(@runner.scores_path, "w")
       end
 
@@ -177,7 +177,7 @@ class RunnerTest < Test::Unit::TestCase
 
       should "set old score if it's not there" do
         mock(File).exist?(@runner.scores_path) { false }
-        mock(FileUtils).mkdir(File.dirname(@runner.scores_path))
+        mock(FileUtils).mkdir_p(File.dirname(@runner.scores_path))
 
         @runner.score
         assert_equal Hash.new, @runner.old_scores
@@ -240,7 +240,7 @@ class RunnerTest < Test::Unit::TestCase
 
           mock(File).exist?(@runner.archive_path) { false }
           mock(YAML).load_file(anything).never
-          mock(FileUtils).mkdir(File.dirname(@runner.archive_path))
+          mock(FileUtils).mkdir_p(File.dirname(@runner.archive_path))
           mock(File).open(@runner.archive_path, "w")
 
           @runner.archive

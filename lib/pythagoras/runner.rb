@@ -77,7 +77,7 @@ module Pythagoras
       if File.exist?(self.scores_path)
         @old_scores = YAML.load_file(self.scores_path)
       else
-        FileUtils.mkdir(File.dirname(self.scores_path))
+        FileUtils.mkdir_p(File.dirname(self.scores_path))
         @old_scores = {}
       end
 
@@ -90,7 +90,7 @@ module Pythagoras
       if File.exist?(self.archive_path)
         archive = YAML.load_file(archive_path)
       else
-        FileUtils.mkdir(File.dirname(self.archive_path))
+        FileUtils.mkdir_p(File.dirname(self.archive_path))
         archive = {}
       end
 
