@@ -18,9 +18,11 @@ class Pythagoras
       return
     end
 
+    ignore = config[:ignore] ? Regexp.new(config[:ignore]) : /[^\w\d\s]+/
+
     begin
       Integrity::Project.all.each do |project|
-        Pythagoras.new(project, config)
+        Pythagoras.new(project.name, config) if project.name !~ ignore
       end
     rescue Exception => e
       STDERR.puts "There was a problem loading your projects from integrity: #{e}"

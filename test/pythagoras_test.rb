@@ -9,8 +9,9 @@ class PythagorasTest < Test::Unit::TestCase
       mock(Integrity).new(@config[:integrity_config])
 
       @project = Integrity::Project.new
+      stub(@project).name { "awesome" }
       mock(Integrity::Project).all { [@project] }
-      mock(Pythagoras).new(@project, @config)
+      mock(Pythagoras).new(@project.name, @config)
     end
 
     before_should "dump out if no config file" do
@@ -36,6 +37,17 @@ class PythagorasTest < Test::Unit::TestCase
 
       mock(Integrity::Project).all { raise Sqlite3Error }
       mock(STDERR).puts(anything)
+      mock(Pythagoras).new(anything).never
+    end
+
+    before_should "ignore projects based on ignore in config" do
+      @config = {:integrity_config => "config path", :ignore => "1\.9"}
+      mock(YAML).load_file("config.yml") { @config }
+      mock(Integrity).new(@config[:integrity_config])
+
+      @project = Integrity::Project.new
+      stub(@project).name { "awesome 1.9" }
+      mock(Integrity::Project).all { [@project] }
       mock(Pythagoras).new(anything).never
     end
 
