@@ -1,6 +1,7 @@
 require 'integrity'
 require 'metric_fu'
 
+$:.unshift(File.dirname(__FILE__))
 require 'pythagoras/runner'
 
 module Pythagoras
