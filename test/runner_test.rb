@@ -236,6 +236,14 @@ class RunnerTest < Test::Unit::TestCase
           mock(Tinder::Campfire).new.never
         end
 
+        should "report problem if notification fails" do
+          mock(@project).notifiers { raise "problem" }
+          mock(STDERR).puts(anything)
+          mock(Tinder::Campfire).new.never
+
+          @runner.notify
+        end
+
         should "not skip notification if config value isn't there" do
           project_config = { "user"    => "nobody",
                              "pass"    => "secret",
