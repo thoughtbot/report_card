@@ -25,7 +25,7 @@ module Pythagoras
 
     begin
       Integrity::Project.all.each do |project|
-        Pythagoras.new(project, config) if project.name !~ ignore
+        Pythagoras::Runner.new(project, config).run if project.name !~ ignore
       end
     rescue Exception => e
       STDERR.puts "There was a problem loading your projects from integrity: #{e}"

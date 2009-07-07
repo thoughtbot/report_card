@@ -10,7 +10,7 @@ class PythagorasTest < Test::Unit::TestCase
       @project = Integrity::Project.new
       stub(@project).name { "awesome" }
       mock(Integrity::Project).all { [@project] }
-      mock(Pythagoras).new(@project, @config)
+      mock(Pythagoras::Runner).new(@project, @config).mock!.run
     end
 
     before_should "dump out if no config file" do
