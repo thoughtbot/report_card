@@ -8,6 +8,48 @@ class RunnerTest < Test::Unit::TestCase
       @runner = Pythagoras::Runner.new(@project, @config)
     end
 
+    should "not even run if not ready" do
+      mock(@runner).ready? { false }
+      mock(@runner).configure.never
+      mock(@runner).generate.never
+      mock(@runner).wrapup.never
+      @runner.run
+    end
+
+    should "run and wrapup if successful" do
+      mock(@runner).ready? { true }
+      mock(@runner).configure
+      mock(@runner).generate
+      mock(@runner).success? { true }
+      mock(@runner).wrapup
+      @runner.run
+    end
+
+    should "run and not wrapup if unsuccessful" do
+      mock(@runner).ready? { true }
+      mock(@runner).configure
+      mock(@runner).generate
+      mock(@runner).success? { false }
+      mock(@runner).wrapup.never
+      @runner.run
+    end
+
+    should "score, record, and notify when wrapping up" do
+      mock(@runner).score
+      mock(@runner).record
+      mock(@runner).score_changed? { true }
+      mock(@runner).notify
+      @runner.wrapup
+    end
+
+    should "score, record, and not notify when wrapping up and the score hasn't changed" do
+      mock(@runner).score
+      mock(@runner).record
+      mock(@runner).score_changed? { false }
+      mock(@runner).notify.never
+      @runner.wrapup
+    end
+
     should "store project and config" do
       assert_equal @runner.project, @project
       assert_equal @runner.config, @config
@@ -185,11 +227,6 @@ class RunnerTest < Test::Unit::TestCase
 
           @runner.archive
         end
-
-        should "notify campfire" do
-          #@runner.notify
-        end
-
       end
     end
   end

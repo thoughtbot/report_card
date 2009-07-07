@@ -7,21 +7,18 @@ module Pythagoras
       @config = config
     end
 
-=begin
     def run
-      if ready?
-        configure
-        generate
-        wrapup if success?
-      end
+      return unless ready?
+      configure
+      generate
+      wrapup if success?
     end
 
     def wrapup
       score
       record
-      notify
+      notify if score_changed?
     end
-=end
 
     def ready?
       dir = Integrity::ProjectBuilder.new(project).send(:export_directory)
@@ -100,27 +97,37 @@ module Pythagoras
       end
     end
 
-    # def notify
-    #   begin
-    #     config = @project.notifiers.first.config
-    #     room ||= begin
-    #       options = {}
-    #       options[:ssl] = true
-    #       campfire = Tinder::Campfire.new(config["account"], options)
-    #       campfire.login(config["user"], config["pass"])
-    #       campfire.find_room_by_name(config["room"])
-    #     end
-    #     room.speak self.message
-    #     room.paste self.scoreboard
-    #     room.leave
-    #   rescue Exception => e
-    #     puts ">> Problem connecting to Campfire: #{e}"
-    #   end
-    # end
+    def notify
+     begin
+        config = @project.notifiers.first.config
+        room ||= begin
+          options = {}
+          options[:ssl] = true
+          campfire = Tinder::Campfire.new(config["account"], options)
+          campfire.login(config["user"], config["pass"])
+          campfire.find_room_by_name(config["room"])
+        end
+        room.speak self.message
+        room.paste self.scoreboard
+        room.leave
+     rescue Exception => e
+       puts ">> Problem connecting to Campfire: #{e}"
+     end
+    end
 
     def message
       path = @project.public ? "" : "private"
       "New metrics generated for #{@project.name}: #{File.join(@config['url'], path, @project.name, 'output')}"
+    end
+
+    def scoreboard
+      scores = ""
+      columns = "%15s%20s%20s\n"
+      scores << sprintf(columns, "", "This Run", "Last Run")
+      scores << sprintf(columns, "Flay Score", @scores[:flay], @old_scores[:flay])
+      scores << sprintf(columns, "Flog Total/Avg", "#{@scores[:flog_total]}/#{@scores[:flog_average]}", "#{@old_scores[:flog_total]}/#{@old_scores[:flog_average]}")
+      scores << sprintf(columns, "Reek Smells", @scores[:reek], @old_scores[:reek])
+      scores << sprintf(columns, "Roodi Problems", @scores[:roodi], @old_scores[:roodi])
     end
 
     def score_changed?
