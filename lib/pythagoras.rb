@@ -25,13 +25,13 @@ module Pythagoras
 
     ignore = config['ignore'] ? Regexp.new(config['ignore']) : /[^\w\d\s]+/
 
-    begin
+    #begin
       Integrity::Project.all.each do |project|
         Pythagoras::Runner.new(project, config).run if project.name !~ ignore
       end
-    rescue Exception => e
-      STDERR.puts "There was a problem loading your projects from integrity: #{e}"
-      return
-    end
+    #rescue Exception => e
+      #STDERR.puts "There was a problem loading your projects from integrity: #{e}"
+      #return
+    #end
   end
 end

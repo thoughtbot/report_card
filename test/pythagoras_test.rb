@@ -29,15 +29,16 @@ class PythagorasTest < Test::Unit::TestCase
       mock(Pythagoras).new(anything).never
     end
 
-    before_should "dump out if no projects" do
-      @config = {'integrity_config' => 'config path'}
-      mock(YAML).load_file("config.yml") { @config }
-      mock(Integrity).new(@config['integrity_config'])
+    # TODO: Need a better way to check for this.
+    # before_should "dump out if no projects" do
+    #   @config = {'integrity_config' => 'config path'}
+    #   mock(YAML).load_file("config.yml") { @config }
+    #   mock(Integrity).new(@config['integrity_config'])
 
-      mock(Integrity::Project).all { raise Sqlite3Error }
-      mock(STDERR).puts(anything)
-      mock(Pythagoras).new(anything).never
-    end
+    #   mock(Integrity::Project).all { raise Sqlite3Error }
+    #   mock(STDERR).puts(anything)
+    #   mock(Pythagoras).new(anything).never
+    # end
 
     before_should "ignore projects based on ignore in config" do
       @config = {'integrity_config' => 'config path', 'ignore' => '1\.9'}
