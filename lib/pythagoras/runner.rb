@@ -9,6 +9,7 @@ module Pythagoras
 
     def run
       return unless ready?
+      STDERR.puts ">> Building metrics for #{project.name}"
       configure
       generate
       wrapup if success?
@@ -101,6 +102,7 @@ module Pythagoras
 
     def notify
       return if @config['skip_notification']
+      STDERR.puts ">> Scores differ, notifying Campfire"
 
       begin
         config = @project.notifiers.first.config

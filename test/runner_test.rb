@@ -7,6 +7,7 @@ class RunnerTest < Test::Unit::TestCase
       @config = {'url'  => 'http://metrics.thoughtbot.com',
                  'site' => '/path/to/site'}
       @runner = Pythagoras::Runner.new(@project, @config)
+      stub(STDERR).puts(anything)
     end
 
     should "not even run if not ready" do
