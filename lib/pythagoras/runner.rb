@@ -141,7 +141,7 @@ module Pythagoras
     end
 
     def site_path(*dirs)
-      File.expand_path(File.join(__FILE__, "..", "..", "..", "_site", *dirs))
+      File.expand_path(File.join(SITE_DIR, *dirs))
     end
 
     def output_path
