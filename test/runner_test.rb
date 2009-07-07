@@ -1,7 +1,7 @@
 require 'test_helper'
 
 class RunnerTest < Test::Unit::TestCase
-  context "with a pythagoras object" do
+  context "with a runner" do
     setup do
       @project = Integrity::Project.new(:name => "awesome")
       @config = {'url' => 'http://metrics.thoughtbot.com'}
@@ -195,6 +195,8 @@ class RunnerTest < Test::Unit::TestCase
       context "with scores" do
         setup do
           stub(@runner).scores { "scores" }
+          stub(@runner).message { "message" }
+          stub(@runner).scoreboard { "scoreboard" }
         end
 
         context "with different old score" do
@@ -226,6 +228,32 @@ class RunnerTest < Test::Unit::TestCase
           mock(File).open(@runner.archive_path, "w")
 
           @runner.archive
+        end
+
+        should "skip notification if config value is there" do
+          @config['skip_notification'] = true
+          @runner.notify
+          mock(Tinder::Campfire).new.never
+        end
+
+        should "not skip notification if config value isn't there" do
+          project_config = { "user"    => "nobody",
+                             "pass"    => "secret",
+                             "room"    => "awesome",
+                             "account" => "comp" }
+          mock(@project).notifiers.mock!.first.mock!.config { project_config }
+
+          room = "room"
+          mock(room).speak(@runner.message)
+          mock(room).paste(@runner.scoreboard)
+          mock(room).leave
+
+          campfire = "campfire"
+          mock(campfire).login(project_config["user"], project_config["pass"])
+          mock(campfire).find_room_by_name(project_config["room"]) { room }
+          mock(Tinder::Campfire).new(project_config["account"], :ssl => true) { campfire }
+
+          @runner.notify
         end
       end
     end

@@ -1,5 +1,6 @@
 require 'integrity'
 require 'metric_fu'
+require 'tinder'
 
 $:.unshift(File.dirname(__FILE__))
 require 'pythagoras/runner'

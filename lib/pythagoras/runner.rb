@@ -98,7 +98,9 @@ module Pythagoras
     end
 
     def notify
-     begin
+      return if @config['skip_notification']
+
+      begin
         config = @project.notifiers.first.config
         room ||= begin
           options = {}
@@ -110,9 +112,9 @@ module Pythagoras
         room.speak self.message
         room.paste self.scoreboard
         room.leave
-     rescue Exception => e
-       puts ">> Problem connecting to Campfire: #{e}"
-     end
+      rescue Exception => e
+        STDERR.puts ">> Problem connecting to Campfire: #{e}"
+      end
     end
 
     def message
