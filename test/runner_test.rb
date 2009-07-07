@@ -4,7 +4,8 @@ class RunnerTest < Test::Unit::TestCase
   context "with a runner" do
     setup do
       @project = Integrity::Project.new(:name => "awesome")
-      @config = {'url' => 'http://metrics.thoughtbot.com'}
+      @config = {'url'  => 'http://metrics.thoughtbot.com',
+                 'site' => '/path/to/site'}
       @runner = Pythagoras::Runner.new(@project, @config)
     end
 
@@ -84,7 +85,7 @@ class RunnerTest < Test::Unit::TestCase
       end
 
       should "use _site/:project for output_path" do
-        assert_equal File.expand_path(File.join(__FILE__, "..", "..", "_site", @project.name)), @runner.output_path
+        assert_equal File.expand_path(File.join(@config['site'], @project.name)), @runner.output_path
       end
     end
 
@@ -100,16 +101,16 @@ class RunnerTest < Test::Unit::TestCase
       end
 
       should "use _site/private/:project for output_path" do
-        assert_equal File.expand_path(File.join(__FILE__, "..", "..", "_site", "private", @project.name)), @runner.output_path
+        assert_equal File.expand_path(File.join(@config['site'], "private", @project.name)), @runner.output_path
       end
     end
 
     should "use _site/scores/:project for scores_path" do
-      assert_equal File.expand_path(File.join(__FILE__, "..", "..", "_site", "scores", @project.name)), @runner.scores_path
+      assert_equal File.expand_path(File.join(@config['site'], "scores", @project.name)), @runner.scores_path
     end
 
     should "use _site/archive/:project for archive_path" do
-      assert_equal File.expand_path(File.join(__FILE__, "..", "..", "_site", "archive", @project.name)), @runner.archive_path
+      assert_equal File.expand_path(File.join(@config['site'], "archive", @project.name)), @runner.archive_path
     end
 
     should "set build artifacts and prepare metric_fu for configure" do

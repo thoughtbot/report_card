@@ -141,7 +141,8 @@ module Pythagoras
     end
 
     def site_path(*dirs)
-      File.expand_path(File.join(SITE_DIR, *dirs))
+      site_dir = @config['site'] || File.join(File.dirname(__FILE__), "..", "..")
+      File.expand_path(File.join(site_dir, *dirs))
     end
 
     def output_path

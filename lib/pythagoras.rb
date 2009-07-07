@@ -7,7 +7,6 @@ require 'pythagoras/runner'
 
 module Pythagoras
   CONFIG_FILE = "config.yml"
-  SITE_DIR = File.join(__FILE__, "..", "..", "_site")
 
   def self.run
     begin
