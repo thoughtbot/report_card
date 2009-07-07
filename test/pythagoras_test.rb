@@ -95,8 +95,17 @@ class PythagorasTest < Test::Unit::TestCase
       assert_equal File.expand_path(File.join(__FILE__, "..", "..", "_site", "private", @project.name)), @py.output_path
     end
 
-    should "set build artifacts to private" do
-      #@py.configure
+    should "set build artifacts and prepare metric_fu for configure" do
+      mock(ENV)['CC_BUILD_ARTIFACTS'] = @py.output_path
+
+      config = "config"
+      mock(config).reset
+      mock(config).template_class = AwesomeTemplate
+      mock(config).metrics = [:flog, :flay, :rcov, :reek, :roodi]
+      mock(config).rcov = anything
+
+      mock.proxy(MetricFu::Configuration).run.yields(config)
+      @py.configure
     end
   end
 end

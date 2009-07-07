@@ -1,4 +1,5 @@
 require 'integrity'
+require 'metric_fu'
 
 class Pythagoras
   CONFIG_FILE = "config.yml"
@@ -15,6 +16,24 @@ class Pythagoras
       Dir.chdir dir
     else
       STDERR.puts ">> Skipping, directory does not exist: #{dir}"
+    end
+  end
+
+  def configure
+    ENV['CC_BUILD_ARTIFACTS'] = self.output_path
+    MetricFu::Configuration.run do |config|
+      config.reset
+      config.template_class = AwesomeTemplate
+      config.metrics  = [:flog, :flay, :rcov, :reek, :roodi]
+      config.rcov     = { :test_files => ['test/functional/*_test.rb', 'test/unit/*_test.rb'],
+                          :rcov_opts  => ["--sort coverage",
+                          "--no-html",
+                          "--text-coverage",
+                          "--no-color",
+                          "--profile",
+                          "--rails",
+                          "--include test",
+                          "--exclude /gems/,/usr/local/lib/site_ruby/1.8/,spec"]}
     end
   end
 
