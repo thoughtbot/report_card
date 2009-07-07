@@ -1,0 +1,48 @@
+h1. Pythagoras
+
+Automatic building and reporting to campfire of metrics with metric_fu through integrity.
+
+h2. Features
+
+* Generates an entire metric_fu site for you based on your integrity projects
+* Notifies campfire of metric stats given that they have changed since the last run
+* Calculates the hypotenuse of a triangle
+
+h2. Requirements
+
+* An Integrity setup.
+* metric_fu
+* tinder
+
+h2. Usage
+
+Run @rake generate@.
+
+It's probably best to do this on a cron job.
+
+h2. Setup
+
+Have a config.yml file in your pythagoras directory with the following info:
+
+<pre>
+
+# This is the path to integrity's config.yml file.
+integrity_config: /home/ci/integrity/config.yml
+
+# Where you want the site to be placed that metric_fu creates
+site: /home/ci/pythagoras/_site
+
+# A regular expression for project names you wish to ignore
+ignore: '[^shoulda]|1\.9'
+
+# The location of your site, for campfire reporting
+url: http://metrics.thoughtbot.com
+
+# Set to true if you would like to skip notifying campfire when metrics have changed
+skip_notification: false
+</pre>
+
+
+h2. Thanks
+
+To thoughtbot for supporting this project.
