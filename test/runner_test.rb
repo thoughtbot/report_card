@@ -4,7 +4,7 @@ class RunnerTest < Test::Unit::TestCase
   context "with a pythagoras object" do
     setup do
       @project = Integrity::Project.new(:name => "awesome")
-      @config = {}
+      @config = {'url' => 'http://metrics.thoughtbot.com'}
       @runner = Pythagoras::Runner.new(@project, @config)
     end
 
@@ -30,23 +30,43 @@ class RunnerTest < Test::Unit::TestCase
       assert ! @runner.ready?
     end
 
-    context "output_path" do
-      should "use _site/:project for a public project" do
+    context "with a public project" do
+      setup do
         assert @project.public
-        assert_equal File.expand_path(File.join(__FILE__, "..", "..", "_site", @project.name)), @runner.output_path
       end
 
-      should "use _site/private/:project for a private project" do
+      should "have an announcement message for notification" do
+        message = @runner.message
+        assert_match "New metrics", message
+        assert_match "#{@config['url']}/#{@project.name}/output", message
+      end
+
+      should "use _site/:project for output_path" do
+        assert_equal File.expand_path(File.join(__FILE__, "..", "..", "_site", @project.name)), @runner.output_path
+      end
+    end
+
+    context "with a private project" do
+      setup do
         @project.public = false
+      end
+
+      should "have an announcement message for notification" do
+        message = @runner.message
+        assert_match "New metrics", message
+        assert_match "#{@config['url']}/private/#{@project.name}/output", message
+      end
+
+      should "use _site/private/:project for output_path" do
         assert_equal File.expand_path(File.join(__FILE__, "..", "..", "_site", "private", @project.name)), @runner.output_path
       end
     end
 
-    should "use _site/scores/:project for score_path" do
+    should "use _site/scores/:project for scores_path" do
       assert_equal File.expand_path(File.join(__FILE__, "..", "..", "_site", "scores", @project.name)), @runner.scores_path
     end
 
-    should "use _site/archive/:project for score_path" do
+    should "use _site/archive/:project for archive_path" do
       assert_equal File.expand_path(File.join(__FILE__, "..", "..", "_site", "archive", @project.name)), @runner.archive_path
     end
 
@@ -97,9 +117,27 @@ class RunnerTest < Test::Unit::TestCase
       setup do
         @report = YAML.load_file(File.expand_path(File.join(__FILE__, "..", "fixtures", "report.yml")))
         stub(YAML).load_file(File.join(MetricFu.base_directory, "report.yml")) { @report }
+        stub(File).exist?(anything) { false }
+        stub(File).open(@runner.scores_path, "w")
       end
 
-      should "load scores from report yml" do
+      should "load old scores if they exist" do
+        old_scores = "old scores"
+        mock(File).exist?(@runner.scores_path) { true }
+        mock(YAML).load_file(@runner.scores_path) { old_scores }
+
+        @runner.score
+        assert_equal old_scores, @runner.old_scores
+      end
+
+      should "set old score if it's not there" do
+        mock(File).exist?(@runner.scores_path) { false }
+
+        @runner.score
+        assert_equal Hash.new, @runner.old_scores
+      end
+
+      should "load and write scores from report yml" do
         mock(File).open(@runner.scores_path, "w")
 
         @runner.score
@@ -117,6 +155,26 @@ class RunnerTest < Test::Unit::TestCase
           stub(@runner).scores { "scores" }
         end
 
+        context "with different old score" do
+          setup do
+            stub(@runner).old_scores { "old scores" }
+          end
+
+          should "return true for score_changed?" do
+            assert @runner.score_changed?
+          end
+        end
+
+        context "with similar old score" do
+          setup do
+            stub(@runner).old_scores { @runner.scores }
+          end
+
+          should "return false for score_changed?" do
+            assert ! @runner.score_changed?
+          end
+        end
+
         should "add to archive" do
           archive = "archive"
           mock(archive)[DateTime.now.to_s] = @runner.scores
@@ -127,8 +185,12 @@ class RunnerTest < Test::Unit::TestCase
 
           @runner.archive
         end
-      end
 
+        should "notify campfire" do
+          #@runner.notify
+        end
+
+      end
     end
   end
 end

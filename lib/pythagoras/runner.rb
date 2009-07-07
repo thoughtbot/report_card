@@ -1,6 +1,6 @@
 module Pythagoras
   class Runner
-    attr_reader :project, :config, :scores
+    attr_reader :project, :config, :scores, :old_scores
 
     def initialize(project, config)
       @project = project
@@ -76,6 +76,12 @@ module Pythagoras
 
       @scores[:rcov] = report[:rcov][:global_percent_run].to_s if report.has_key?(:rcov)
 
+      if File.exist?(self.scores_path)
+        @old_scores = YAML.load_file(scores_path)
+      else
+        @old_scores = {}
+      end
+
       File.open(self.scores_path, "w") do |f|
         f.write @scores.to_yaml
       end
@@ -92,6 +98,33 @@ module Pythagoras
       File.open(self.archive_path, 'w') do |f|
         f.write archive.to_yaml
       end
+    end
+
+    # def notify
+    #   begin
+    #     config = @project.notifiers.first.config
+    #     room ||= begin
+    #       options = {}
+    #       options[:ssl] = true
+    #       campfire = Tinder::Campfire.new(config["account"], options)
+    #       campfire.login(config["user"], config["pass"])
+    #       campfire.find_room_by_name(config["room"])
+    #     end
+    #     room.speak self.message
+    #     room.paste self.scoreboard
+    #     room.leave
+    #   rescue Exception => e
+    #     puts ">> Problem connecting to Campfire: #{e}"
+    #   end
+    # end
+
+    def message
+      path = @project.public ? "" : "private"
+      "New metrics generated for #{@project.name}: #{File.join(@config['url'], path, @project.name, 'output')}"
+    end
+
+    def score_changed?
+      self.scores != self.old_scores
     end
 
     def success?
