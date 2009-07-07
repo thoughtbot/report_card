@@ -10,6 +10,16 @@ class Pythagoras
     @config = config
   end
 
+=begin
+  def run
+    if ready?
+      configure
+      generate
+      report if success?
+    end
+  end
+=end
+
   def ready?
     dir = Integrity::ProjectBuilder.new(project).send(:export_directory)
     if File.exist?(dir)
@@ -35,6 +45,23 @@ class Pythagoras
                           "--include test",
                           "--exclude /gems/,/usr/local/lib/site_ruby/1.8/,spec"]}
     end
+    MetricFu.report.instance_variable_set(:@report_hash, {})
+  end
+
+  def generate
+    begin
+      MetricFu.metrics.each { |metric| MetricFu.report.add(metric) }
+      MetricFu.report.save_output(MetricFu.report.to_yaml, MetricFu.base_directory, 'report.yml')
+      MetricFu.report.save_templatized_report
+      @success = true
+    rescue Exception => e
+      STDERR.puts "Problem generating the reports: #{e}"
+      @success = false
+    end
+  end
+
+  def success?
+    @success
   end
 
   def output_path

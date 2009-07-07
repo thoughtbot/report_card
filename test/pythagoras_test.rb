@@ -106,6 +106,36 @@ class PythagorasTest < Test::Unit::TestCase
 
       mock.proxy(MetricFu::Configuration).run.yields(config)
       @py.configure
+      assert_equal Hash.new, MetricFu.report.instance_variable_get(:@report_hash)
+    end
+
+    context "given already configured" do
+      setup do
+        @py.configure
+      end
+
+      should "successfully generate output" do
+        metric = "metric"
+        report = "report"
+
+        mock(report).add(metric)
+        mock(report).save_templatized_report
+        mock(report).to_yaml { "yaml" }
+        mock(report).save_output("yaml", MetricFu.base_directory, "report.yml")
+
+        stub(MetricFu).report { report }
+        mock(MetricFu).metrics.stub!.each.yields(metric)
+
+        @py.generate
+        assert @py.success?
+      end
+
+      should "be unsuccessful if some problem arises" do
+        stub(MetricFu).metrics { raise "some problem" }
+        mock(STDERR).puts(anything)
+        @py.generate
+        assert ! @py.success?
+      end
     end
   end
 end
