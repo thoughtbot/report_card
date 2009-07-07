@@ -161,6 +161,7 @@ class RunnerTest < Test::Unit::TestCase
         @report = YAML.load_file(File.expand_path(File.join(__FILE__, "..", "fixtures", "report.yml")))
         stub(YAML).load_file(File.join(MetricFu.base_directory, "report.yml")) { @report }
         stub(File).exist?(anything) { false }
+        stub(FileUtils).mkdir(anything)
         stub(File).open(@runner.scores_path, "w")
       end
 
@@ -175,6 +176,7 @@ class RunnerTest < Test::Unit::TestCase
 
       should "set old score if it's not there" do
         mock(File).exist?(@runner.scores_path) { false }
+        mock(FileUtils).mkdir(File.dirname(@runner.scores_path))
 
         @runner.score
         assert_equal Hash.new, @runner.old_scores
@@ -223,9 +225,21 @@ class RunnerTest < Test::Unit::TestCase
         should "add to archive" do
           archive = "archive"
           mock(archive)[DateTime.now.to_s] = @runner.scores
-          mock(YAML).load_file(@runner.archive_path) { archive }
 
           mock(File).exist?(@runner.archive_path) { true }
+          mock(YAML).load_file(@runner.archive_path) { archive }
+          mock(File).open(@runner.archive_path, "w")
+
+          @runner.archive
+        end
+
+        should "set and create archive if it does not exist" do
+          #archive = "archive"
+          #mock(archive)[DateTime.now.to_s] = @runner.scores
+
+          mock(File).exist?(@runner.archive_path) { false }
+          mock(YAML).load_file(anything).never
+          mock(FileUtils).mkdir(File.dirname(@runner.archive_path))
           mock(File).open(@runner.archive_path, "w")
 
           @runner.archive
