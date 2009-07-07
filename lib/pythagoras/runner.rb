@@ -35,7 +35,7 @@ module Pythagoras
       MetricFu::Configuration.run do |config|
         config.reset
         config.template_class = AwesomeTemplate
-        config.metrics  = [:flog, :flay, :rcov, :reek, :roodi]
+        config.metrics  = [:flog, :flay, :reek, :roodi]
         config.rcov     = { :test_files => ['test/functional/*_test.rb', 'test/unit/*_test.rb'],
                             :rcov_opts  => ["--sort coverage",
                             "--no-html",
