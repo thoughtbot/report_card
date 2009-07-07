@@ -4,9 +4,9 @@ require 'test_helper'
 class PythagorasTest < Test::Unit::TestCase
   context "running pythagoras" do
     before_should "load data from integrity" do
-      @config = {:integrity_config => "config path"}
+      @config = {'integrity_config' => 'config path'}
       mock(YAML).load_file("config.yml") { @config }
-      mock(Integrity).new(@config[:integrity_config])
+      mock(Integrity).new(@config['integrity_config'])
 
       @project = Integrity::Project.new
       stub(@project).name { "awesome" }
@@ -31,9 +31,9 @@ class PythagorasTest < Test::Unit::TestCase
     end
 
     before_should "dump out if no projects" do
-      @config = {:integrity_config => "config path"}
+      @config = {'integrity_config' => 'config path'}
       mock(YAML).load_file("config.yml") { @config }
-      mock(Integrity).new(@config[:integrity_config])
+      mock(Integrity).new(@config['integrity_config'])
 
       mock(Integrity::Project).all { raise Sqlite3Error }
       mock(STDERR).puts(anything)
@@ -41,9 +41,9 @@ class PythagorasTest < Test::Unit::TestCase
     end
 
     before_should "ignore projects based on ignore in config" do
-      @config = {:integrity_config => "config path", :ignore => "1\.9"}
+      @config = {'integrity_config' => 'config path', 'ignore' => '1\.9'}
       mock(YAML).load_file("config.yml") { @config }
-      mock(Integrity).new(@config[:integrity_config])
+      mock(Integrity).new(@config['integrity_config'])
 
       @project = Integrity::Project.new
       stub(@project).name { "awesome 1.9" }

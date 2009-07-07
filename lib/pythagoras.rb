@@ -79,13 +79,13 @@ class Pythagoras
     end
 
     if config
-      Integrity.new(config[:integrity_config])
+      Integrity.new(config['integrity_config'])
     else
       STDERR.puts "Your config file is blank."
       return
     end
 
-    ignore = config[:ignore] ? Regexp.new(config[:ignore]) : /[^\w\d\s]+/
+    ignore = config['ignore'] ? Regexp.new(config['ignore']) : /[^\w\d\s]+/
 
     begin
       Integrity::Project.all.each do |project|
