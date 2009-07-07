@@ -35,17 +35,17 @@ class RunnerTest < Test::Unit::TestCase
       @runner.run
     end
 
-    should "score, record, and notify when wrapping up" do
+    should "score, archive, and notify when wrapping up" do
       mock(@runner).score
-      mock(@runner).record
+      mock(@runner).archive
       mock(@runner).score_changed? { true }
       mock(@runner).notify
       @runner.wrapup
     end
 
-    should "score, record, and not notify when wrapping up and the score hasn't changed" do
+    should "score, archive, and not notify when wrapping up and the score hasn't changed" do
       mock(@runner).score
-      mock(@runner).record
+      mock(@runner).archive
       mock(@runner).score_changed? { false }
       mock(@runner).notify.never
       @runner.wrapup

@@ -16,7 +16,7 @@ module Pythagoras
 
     def wrapup
       score
-      record
+      archive
       notify if score_changed?
     end
 
