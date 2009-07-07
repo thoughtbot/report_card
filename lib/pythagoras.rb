@@ -11,20 +11,24 @@ class Pythagoras
       return
     end
 
-    Integrity.new(config[:integrity_config])
-
-    begin
-      projects = Integrity::Project.all
-    rescue Exception => e
-      STDERR.puts "No projects were found at #{config[:integrity_config]}: #{e}"
+    if config
+      Integrity.new(config[:integrity_config])
+    else
+      STDERR.puts "Your config file is blank."
       return
     end
 
-    projects.each do |project|
-      Pythagoras.new(project, config)
+    begin
+      Integrity::Project.all.each do |project|
+        Pythagoras.new(project, config)
+      end
+    rescue Exception => e
+      STDERR.puts "There was a problem loading your projects from integrity: #{e}"
+      return
     end
   end
 
   def initialize(project, config)
+    p project
   end
 end

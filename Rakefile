@@ -1,6 +1,14 @@
 require 'rubygems'
 require 'rake'
 
+task :default => :test
+
+desc "Generate metrics"
+task :generate do
+  require 'lib/pythagoras'
+  Pythagoras.run
+end
+
 begin
   require 'jeweler'
   Jeweler::Tasks.new do |gem|
@@ -35,9 +43,6 @@ rescue LoadError
     abort "RCov is not available. In order to run rcov, you must: sudo gem install spicycode-rcov"
   end
 end
-
-
-task :default => :test
 
 require 'rake/rdoctask'
 Rake::RDocTask.new do |rdoc|

@@ -21,6 +21,14 @@ class PythagorasTest < Test::Unit::TestCase
       mock(Pythagoras).new(anything).never
     end
 
+    before_should "dump out if blank config file" do
+      mock(YAML).load_file("config.yml") { false }
+      mock(STDERR).puts(anything)
+
+      mock(Integrity).new(anything).never
+      mock(Pythagoras).new(anything).never
+    end
+
     before_should "dump out if no projects" do
       @config = {:integrity_config => "config path"}
       mock(YAML).load_file("config.yml") { @config }
