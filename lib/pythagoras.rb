@@ -5,6 +5,7 @@ require 'pythagoras/runner'
 
 module Pythagoras
   CONFIG_FILE = "config.yml"
+
   def self.run
     begin
       config = YAML.load_file(CONFIG_FILE)

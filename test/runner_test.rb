@@ -30,14 +30,24 @@ class RunnerTest < Test::Unit::TestCase
       assert ! @runner.ready?
     end
 
-    should "use _site/:project for generating metrics" do
-      assert @project.public
-      assert_equal File.expand_path(File.join(__FILE__, "..", "..", "_site", @project.name)), @runner.output_path
+    context "output_path" do
+      should "use _site/:project for a public project" do
+        assert @project.public
+        assert_equal File.expand_path(File.join(__FILE__, "..", "..", "_site", @project.name)), @runner.output_path
+      end
+
+      should "use _site/private/:project for a private project" do
+        @project.public = false
+        assert_equal File.expand_path(File.join(__FILE__, "..", "..", "_site", "private", @project.name)), @runner.output_path
+      end
     end
 
-    should "use _site/private/:project for generating metrics on a private project" do
-      @project.public = false
-      assert_equal File.expand_path(File.join(__FILE__, "..", "..", "_site", "private", @project.name)), @runner.output_path
+    should "use _site/scores/:project for score_path" do
+      assert_equal File.expand_path(File.join(__FILE__, "..", "..", "_site", "scores", @project.name)), @runner.scores_path
+    end
+
+    should "use _site/archive/:project for score_path" do
+      assert_equal File.expand_path(File.join(__FILE__, "..", "..", "_site", "archive", @project.name)), @runner.archive_path
     end
 
     should "set build artifacts and prepare metric_fu for configure" do
@@ -83,7 +93,42 @@ class RunnerTest < Test::Unit::TestCase
       end
     end
 
-    context "notification" do
+    context "wrapping up" do
+      setup do
+        @report = YAML.load_file(File.expand_path(File.join(__FILE__, "..", "fixtures", "report.yml")))
+        stub(YAML).load_file(File.join(MetricFu.base_directory, "report.yml")) { @report }
+      end
+
+      should "load scores from report yml" do
+        mock(File).open(@runner.scores_path, "w")
+
+        @runner.score
+
+        assert_equal @report[:flay][:total_score].to_s,        @runner.scores[:flay]
+        assert_equal @report[:flog][:total].to_s,              @runner.scores[:flog_total]
+        assert_equal @report[:flog][:average].to_s,            @runner.scores[:flog_average]
+        assert_equal @report[:roodi][:problems].size.to_s,     @runner.scores[:roodi]
+        assert_equal @report[:rcov][:global_percent_run].to_s, @runner.scores[:rcov]
+        assert_equal "9",                                      @runner.scores[:reek]
+      end
+
+      context "with scores" do
+        setup do
+          stub(@runner).scores { "scores" }
+        end
+
+        should "add to archive" do
+          archive = "archive"
+          mock(archive)[DateTime.now.to_s] = @runner.scores
+          mock(YAML).load_file(@runner.archive_path) { archive }
+
+          mock(File).exist?(@runner.archive_path) { true }
+          mock(File).open(@runner.archive_path, "w")
+
+          @runner.archive
+        end
+      end
+
     end
   end
 end

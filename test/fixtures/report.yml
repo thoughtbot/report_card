@@ -1,0 +1,2598 @@
+--- 
+:flog: 
+  :average: 6.9
+  :pages: 
+  - :scanned_methods: 
+    - :score: 54.6
+      :operators: 
+      - :score: 9.6
+        :operator: request
+      - :score: 7.0
+        :operator: session
+      - :score: 6.4
+        :operator: to_hash
+      - :score: 4.5
+        :operator: assignment
+      - :score: 4.3
+        :operator: respond_to?
+      - :score: 4.3
+        :operator: branch
+      - :score: 3.2
+        :operator: class
+      - :score: 3.1
+        :operator: instance_variable_get
+      - :score: 2.8
+        :operator: name
+      - :score: 2.0
+        :operator: env
+      - :score: 1.8
+        :operator: "[]"
+      - :score: 1.8
+        :operator: parameters
+      - :score: 1.6
+        :operator: request_uri
+      - :score: 1.6
+        :operator: host
+      - :score: 1.6
+        :operator: merge!
+      - :score: 1.6
+        :operator: protocol
+      - :score: 1.6
+        :operator: expand_path
+      - :score: 1.4
+        :operator: message
+      - :score: 1.4
+        :operator: backtrace
+      - :score: 1.4
+        :operator: api_key
+      :name: Catcher#exception_to_data
+    - :score: 41.7
+      :operators: 
+      - :score: 23.3
+        :operator: "[]"
+      - :score: 8.0
+        :operator: assignment
+      - :score: 7.4
+        :operator: branch
+      - :score: 4.4
+        :operator: is_a?
+      - :score: 3.4
+        :operator: filter_parameters
+      - :score: 3.2
+        :operator: respond_to?
+      - :score: 1.6
+        :operator: clean_hoptoad_params
+      - :score: 1.6
+        :operator: clean_hoptoad_environment
+      - :score: 1.4
+        :operator: clean_non_serializable_data
+      - :score: 1.4
+        :operator: clean_hoptoad_backtrace
+      :name: Catcher#clean_notice
+    - :score: 36.5
+      :operators: 
+      - :score: 12.7
+        :operator: assignment
+      - :score: 4.7
+        :operator: log
+      - :score: 4.3
+        :operator: branch
+      - :score: 3.5
+        :operator: class
+      - :score: 1.9
+        :operator: stringify_keys
+      - :score: 1.8
+        :operator: proxy_pass
+      - :score: 1.8
+        :operator: proxy_host
+      - :score: 1.8
+        :operator: proxy_port
+      - :score: 1.8
+        :operator: proxy_user
+      - :score: 1.7
+        :operator: to_yaml
+      - :score: 1.7
+        :operator: path
+      - :score: 1.6
+        :operator: port
+      - :score: 1.6
+        :operator: Proxy
+      - :score: 1.6
+        :operator: host
+      - :score: 1.5
+        :operator: post
+      - :score: 1.4
+        :operator: http_open_timeout
+      - :score: 1.4
+        :operator: secure
+      - :score: 1.4
+        :operator: http_read_timeout
+      - :score: 1.4
+        :operator: new
+      - :score: 1.4
+        :operator: url
+      :name: Catcher#send_to_hoptoad
+    - :score: 33.1
+      :operators: 
+      - :score: 14.6
+        :operator: assignment
+      - :score: 13.7
+        :operator: branch
+      - :score: 7.6
+        :operator: filter_backtrace
+      - :score: 6.2
+        :operator: gsub
+      - :score: 4.2
+        :operator: inject
+      - :score: 2.3
+        :operator: path
+      - :score: 2.1
+        :operator: backtrace_filters
+      - :score: 2.0
+        :operator: basename
+      - :score: 1.9
+        :operator: clear
+      :name: HoptoadNotifier#add_default_filters
+    - :score: 23.3
+      :operators: 
+      - :score: 9.2
+        :operator: assignment
+      - :score: 5.3
+        :operator: to_a
+      - :score: 4.3
+        :operator: branch
+      - :score: 3.0
+        :operator: inject
+      - :score: 1.7
+        :operator: backtrace_filters
+      - :score: 1.7
+        :operator: first
+      - :score: 1.6
+        :operator: call
+      - :score: 1.6
+        :operator: size
+      - :score: 1.5
+        :operator: split
+      - :score: 1.4
+        :operator: map
+      - :score: 1.4
+        :operator: ==
+      - :score: 1.4
+        :operator: compact
+      - :score: 0.4
+        :operator: lit_fixnum
+      :name: Catcher#clean_hoptoad_backtrace
+    - :score: 19.9
+      :operators: 
+      - :score: 8.0
+        :operator: eval
+      - :score: 6.0
+        :operator: sclass
+      - :score: 2.9
+        :operator: branch
+      - :score: 1.8
+        :operator: attr_accessor
+      - :score: 1.5
+        :operator: assignment
+      - :score: 1.4
+        :operator: map!
+      - :score: 1.2
+        :operator: freeze
+      - :score: 1.2
+        :operator: compact!
+      :name: HoptoadNotifier#none
+    - :score: 19.6
+      :operators: 
+      - :score: 9.6
+        :operator: send
+      - :score: 6.8
+        :operator: instance_methods
+      - :score: 3.0
+        :operator: include?
+      - :score: 2.8
+        :operator: branch
+      :name: Catcher#included
+    - :score: 19.4
+      :operators: 
+      - :score: 4.5
+        :operator: branch
+      - :score: 3.7
+        :operator: class
+      - :score: 3.1
+        :operator: assignment
+      - :score: 3.1
+        :operator: include?
+      - :score: 1.9
+        :operator: exception_to_data
+      - :score: 1.8
+        :operator: name
+      - :score: 1.8
+        :operator: ignore_by_filters
+      - :score: 1.7
+        :operator: call
+      - :score: 1.6
+        :operator: find
+      - :score: 1.6
+        :operator: ignore
+      - :score: 1.4
+        :operator: flatten
+      :name: Catcher#ignore?
+    - :score: 16.4
+      :operators: 
+      - :score: 6.1
+        :operator: assignment
+      - :score: 5.4
+        :operator: last
+      - :score: 3.0
+        :operator: branch
+      - :score: 2.8
+        :operator: inject
+      - :score: 1.8
+        :operator: first
+      - :score: 1.7
+        :operator: stringify_keys
+      - :score: 1.6
+        :operator: to_s
+      - :score: 1.6
+        :operator: is_a?
+      :name: Catcher#stringify_keys
+    - :score: 16.0
+      :operators: 
+      - :score: 4.5
+        :operator: send
+      - :score: 4.2
+        :operator: branch
+      - :score: 3.1
+        :operator: logger
+      - :score: 1.7
+        :operator: body
+      - :score: 1.7
+        :operator: +
+      - :score: 1.5
+        :operator: report_response_body
+      - :score: 1.5
+        :operator: respond_to?
+      - :score: 1.4
+        :operator: report_environment_info
+      - :score: 1.4
+        :operator: assignment
+      :name: Catcher#log
+    - :score: 14.2
+      :operators: 
+      - :score: 6.0
+        :operator: send
+      - :score: 3.8
+        :operator: branch
+      - :score: 2.0
+        :operator: include?
+      - :score: 1.9
+        :operator: report_ready
+      - :score: 1.9
+        :operator: yield
+      - :score: 1.9
+        :operator: add_default_filters
+      :name: HoptoadNotifier#configure
+    - :score: 13.3
+      :operators: 
+      - :score: 8.5
+        :operator: assignment
+      - :score: 6.0
+        :operator: branch
+      - :score: 3.2
+        :operator: inject
+      - :score: 1.9
+        :operator: clean_non_serializable_data
+      - :score: 1.7
+        :operator: update
+      - :score: 1.5
+        :operator: to_s
+      :name: Catcher#clean_non_serializable_data
+    - :score: 11.9
+      :operators: 
+      - :score: 7.7
+        :operator: assignment
+      - :score: 4.4
+        :operator: branch
+      - :score: 1.8
+        :operator: to_s
+      - :score: 1.7
+        :operator: environment_filters
+      - :score: 1.6
+        :operator: match
+      - :score: 1.5
+        :operator: any?
+      - :score: 1.4
+        :operator: each
+      :name: Catcher#clean_hoptoad_environment
+    - :score: 11.9
+      :operators: 
+      - :score: 7.7
+        :operator: assignment
+      - :score: 4.4
+        :operator: branch
+      - :score: 1.8
+        :operator: to_s
+      - :score: 1.7
+        :operator: params_filters
+      - :score: 1.6
+        :operator: match
+      - :score: 1.5
+        :operator: any?
+      - :score: 1.4
+        :operator: each
+      :name: Catcher#clean_hoptoad_params
+    - :score: 10.1
+      :operators: 
+      - :score: 1.9
+        :operator: request
+      - :score: 1.8
+        :operator: ignore_user_agent
+      - :score: 1.7
+        :operator: user_agent
+      - :score: 1.6
+        :operator: flatten
+      - :score: 1.5
+        :operator: ===
+      - :score: 1.5
+        :operator: assignment
+      - :score: 1.4
+        :operator: any?
+      - :score: 1.4
+        :operator: branch
+      :name: Catcher#ignore_user_agent?
+    - :score: 9.7
+      :operators: 
+      - :score: 4.4
+        :operator: branch
+      - :score: 3.6
+        :operator: default_notice_options
+      - :score: 3.2
+        :operator: merge
+      - :score: 1.8
+        :operator: exception_to_data
+      :name: Catcher#normalize_notice
+    - :score: 8.5
+      :operators: 
+      - :score: 4.1
+        :operator: logger
+      - :score: 2.2
+        :operator: +
+      - :score: 2.0
+        :operator: info
+      - :score: 1.9
+        :operator: branch
+      :name: HoptoadNotifier#write_verbose_log
+    - :score: 8.2
+      :operators: 
+      - :score: 2.1
+        :operator: port
+      - :score: 2.1
+        :operator: host
+      - :score: 2.1
+        :operator: protocol
+      - :score: 1.9
+        :operator: parse
+      :name: HoptoadNotifier#url
+    - :score: 7.1
+      :operators: 
+      - :score: 3.2
+        :operator: assignment
+      - :score: 1.6
+        :operator: send_to_hoptoad
+      - :score: 1.6
+        :operator: normalize_notice
+      - :score: 1.6
+        :operator: clean_notice
+      - :score: 1.4
+        :operator: branch
+      - :score: 1.4
+        :operator: public_environment?
+      :name: Catcher#notify_hoptoad
+    - :score: 6.5
+      :operators: 
+      - :score: 2.8
+        :operator: branch
+      - :score: 1.5
+        :operator: ignore?
+      - :score: 1.5
+        :operator: notify_hoptoad
+      - :score: 1.5
+        :operator: ignore_user_agent?
+      - :score: 1.4
+        :operator: rescue_action_in_public_without_hoptoad
+      :name: Catcher#rescue_action_in_public_with_hoptoad
+    - :score: 5.7
+      :operators: 
+      - :score: 1.9
+        :operator: api_key
+      - :score: 1.9
+        :operator: to_hash
+      - :score: 1.9
+        :operator: caller
+      :name: HoptoadNotifier#default_notice_options
+    - :score: 5.5
+      :operators: 
+      - :score: 3.9
+        :operator: logger
+      - :score: 3.9
+        :operator: branch
+      :name: HoptoadNotifier#logger
+    - :score: 5.0
+      :operators: 
+      - :score: 3.9
+        :operator: branch
+      - :score: 2.0
+        :operator: secure
+      - :score: 1.1
+        :operator: lit_fixnum
+      :name: HoptoadNotifier#port
+    - :score: 4.4
+      :operators: 
+      - :score: 2.1
+        :operator: new
+      - :score: 1.9
+        :operator: notify_hoptoad
+      - :score: 1.9
+        :operator: assignment
+      :name: HoptoadNotifier#notify
+    - :score: 4.4
+      :operators: 
+      - :score: 4.4
+        :operator: require
+      :name: main#none
+    - :score: 4.2
+      :operators: 
+      - :score: 1.9
+        :operator: dup
+      - :score: 1.9
+        :operator: flatten!
+      - :score: 1.9
+        :operator: assignment
+      :name: HoptoadNotifier#ignore
+    - :score: 4.2
+      :operators: 
+      - :score: 1.9
+        :operator: dup
+      - :score: 1.9
+        :operator: assignment
+      - :score: 1.9
+        :operator: flatten!
+      :name: HoptoadNotifier#ignore_user_agent
+    - :score: 4.0
+      :operators: 
+      - :score: 2.1
+        :operator: ignore_by_filters
+      - :score: 1.9
+        :operator: "<<"
+      :name: HoptoadNotifier#ignore_by_filter
+    - :score: 4.0
+      :operators: 
+      - :score: 2.1
+        :operator: environment_info
+      - :score: 1.9
+        :operator: write_verbose_log
+      :name: HoptoadNotifier#report_environment_info
+    - :score: 4.0
+      :operators: 
+      - :score: 2.1
+        :operator: backtrace_filters
+      - :score: 1.9
+        :operator: "<<"
+      :name: HoptoadNotifier#filter_backtrace
+    - :score: 3.6
+      :operators: 
+      - :score: 1.5
+        :operator: new
+      - :score: 1.5
+        :operator: logger
+      - :score: 1.5
+        :operator: assignment
+      - :score: 1.4
+        :operator: branch
+      :name: Catcher#logger
+    - :score: 3.3
+      :operators: 
+      - :score: 2.0
+        :operator: "<<"
+      - :score: 1.9
+        :operator: branch
+      - :score: 1.9
+        :operator: assignment
+      :name: HoptoadNotifier#environment_info
+    - :score: 2.7
+      :operators: 
+      - :score: 1.9
+        :operator: flatten
+      - :score: 1.9
+        :operator: assignment
+      :name: HoptoadNotifier#ignore_user_agent_only=
+    - :score: 2.7
+      :operators: 
+      - :score: 1.9
+        :operator: flatten
+      - :score: 1.9
+        :operator: assignment
+      :name: HoptoadNotifier#ignore_only=
+    - :score: 2.7
+      :operators: 
+      - :score: 1.9
+        :operator: branch
+      - :score: 1.9
+        :operator: secure
+      :name: HoptoadNotifier#protocol
+    - :score: 2.6
+      :operators: 
+      - :score: 2.6
+        :operator: include
+      :name: Sender#none
+    - :score: 2.1
+      :operators: 
+      - :score: 1.5
+        :operator: include?
+      - :score: 1.4
+        :operator: branch
+      :name: Catcher#public_environment?
+    - :score: 2.0
+      :operators: 
+      - :score: 1.9
+        :operator: assignment
+      - :score: 0.5
+        :operator: lit_fixnum
+      :name: HoptoadNotifier#http_open_timeout
+    - :score: 2.0
+      :operators: 
+      - :score: 1.9
+        :operator: assignment
+      - :score: 0.5
+        :operator: lit_fixnum
+      :name: HoptoadNotifier#http_read_timeout
+    - :score: 1.9
+      :operators: 
+      - :score: 1.9
+        :operator: assignment
+      :name: HoptoadNotifier#ignore_by_filters
+    - :score: 1.9
+      :operators: 
+      - :score: 1.9
+        :operator: write_verbose_log
+      :name: HoptoadNotifier#report_ready
+    - :score: 1.9
+      :operators: 
+      - :score: 1.9
+        :operator: assignment
+      :name: HoptoadNotifier#backtrace_filters
+    - :score: 1.9
+      :operators: 
+      - :score: 1.9
+        :operator: assignment
+      :name: HoptoadNotifier#params_filters
+    - :score: 1.9
+      :operators: 
+      - :score: 1.9
+        :operator: write_verbose_log
+      :name: HoptoadNotifier#report_response_body
+    - :score: 1.9
+      :operators: 
+      - :score: 1.9
+        :operator: assignment
+      :name: HoptoadNotifier#environment_filters
+    - :score: 1.9
+      :operators: 
+      - :score: 1.9
+        :operator: assignment
+      :name: HoptoadNotifier#host
+    - :score: 1.3
+      :operators: 
+      - :score: 1.3
+        :operator: private
+      :name: Catcher#none
+    :average_score: 9.9
+    :score: 465.7
+    :highest_score: 54.6
+    :path: /lib/hoptoad_notifier.rb
+  - :scanned_methods: 
+    - :score: 21.9
+      :operators: 
+      - :score: 10.3
+        :operator: assignment
+      - :score: 5.1
+        :operator: branch
+      - :score: 2.4
+        :operator: each
+      - :score: 1.6
+        :operator: keys
+      - :score: 1.5
+        :operator: name
+      - :score: 1.5
+        :operator: aliases_for
+      - :score: 1.4
+        :operator: add_to
+      - :score: 1.4
+        :operator: build_class
+      - :score: 1.4
+        :operator: collect
+      - :score: 1.3
+        :operator: set
+      - :score: 1.3
+        :operator: include?
+      - :score: 1.2
+        :operator: symbolize_keys
+      - :score: 1.2
+        :operator: result
+      - :score: 1.2
+        :operator: flatten
+      - :score: 1.2
+        :operator: new
+      :name: Factory#run
+    - :score: 15.0
+      :operators: 
+      - :score: 5.5
+        :operator: branch
+      - :score: 3.1
+        :operator: require
+      - :score: 2.9
+        :operator: assignment
+      - :score: 2.7
+        :operator: each
+      - :score: 1.9
+        :operator: join
+      - :score: 1.7
+        :operator: "[]"
+      - :score: 1.4
+        :operator: directory?
+      - :score: 1.4
+        :operator: exists?
+      - :score: 1.4
+        :operator: definition_file_paths
+      :name: Factory#find_definitions
+    - :score: 12.4
+      :operators: 
+      - :score: 5.5
+        :operator: sclass
+      - :score: 3.4
+        :operator: attr_accessor
+      - :score: 2.2
+        :operator: attr_reader
+      - :score: 2.2
+        :operator: assignment
+      - :score: 1.1
+        :operator: private
+      :name: Factory#none
+    - :score: 11.7
+      :operators: 
+      - :score: 3.9
+        :operator: assignment
+      - :score: 3.7
+        :operator: branch
+      - :score: 2.7
+        :operator: new
+      - :score: 2.7
+        :operator: raise
+      - :score: 1.4
+        :operator: name
+      - :score: 1.2
+        :operator: block_given?
+      - :score: 1.2
+        :operator: "<<"
+      - :score: 1.2
+        :operator: attribute_defined?
+      :name: Factory#add_attribute
+    - :score: 11.2
+      :operators: 
+      - :score: 2.9
+        :operator: factory_name
+      - :score: 2.4
+        :operator: branch
+      - :score: 2.4
+        :operator: assignment
+      - :score: 1.4
+        :operator: new
+      - :score: 1.4
+        :operator: factory_name_for
+      - :score: 1.3
+        :operator: raise
+      - :score: 1.3
+        :operator: delete
+      - :score: 1.2
+        :operator: ==
+      - :score: 1.2
+        :operator: "<<"
+      :name: Factory#association
+    - :score: 10.9
+      :operators: 
+      - :score: 2.7
+        :operator: "[]"
+      - :score: 2.4
+        :operator: branch
+      - :score: 1.5
+        :operator: inspect
+      - :score: 1.4
+        :operator: keys
+      - :score: 1.3
+        :operator: assert_valid_strategy
+      - :score: 1.3
+        :operator: raise
+      - :score: 1.2
+        :operator: assignment
+      - :score: 1.2
+        :operator: ==
+      - :score: 1.2
+        :operator: "-"
+      :name: Factory#assert_valid_options
+    - :score: 10.2
+      :operators: 
+      - :score: 5.4
+        :operator: gsub
+      - :score: 2.2
+        :operator: to_s
+      - :score: 1.4
+        :operator: tr
+      - :score: 1.2
+        :operator: downcase
+      :name: Factory#class_name_to_variable_name
+    - :score: 10.1
+      :operators: 
+      - :score: 4.8
+        :operator: assignment
+      - :score: 1.5
+        :operator: factory_by_name
+      - :score: 1.3
+        :operator: inherit_from
+      - :score: 1.2
+        :operator: branch
+      - :score: 1.2
+        :operator: factories
+      - :score: 1.2
+        :operator: delete
+      - :score: 1.2
+        :operator: yield
+      - :score: 1.2
+        :operator: factory_name
+      - :score: 1.2
+        :operator: new
+      :name: Factory#define
+    - :score: 10.0
+      :operators: 
+      - :score: 2.5
+        :operator: branch
+      - :score: 1.6
+        :operator: clone
+      - :score: 1.5
+        :operator: name
+      - :score: 1.4
+        :operator: "<<"
+      - :score: 1.4
+        :operator: attributes
+      - :score: 1.3
+        :operator: assignment
+      - :score: 1.3
+        :operator: attribute_defined?
+      - :score: 1.2
+        :operator: each
+      - :score: 1.2
+        :operator: class_name
+      :name: Factory#inherit_from
+    - :score: 9.8
+      :operators: 
+      - :score: 7.9
+        :operator: assignment
+      - :score: 4.1
+        :operator: branch
+      - :score: 2.4
+        :operator: inject
+      - :score: 1.6
+        :operator: to_sym
+      :name: Factory#symbolize_keys
+    - :score: 8.9
+      :operators: 
+      - :score: 1.7
+        :operator: to_s
+      - :score: 1.5
+        :operator: new
+      - :score: 1.5
+        :operator: to_sym
+      - :score: 1.5
+        :operator: factories
+      - :score: 1.3
+        :operator: raise
+      - :score: 1.3
+        :operator: "[]"
+      - :score: 1.2
+        :operator: branch
+      :name: Factory#factory_by_name
+    - :score: 8.1
+      :operators: 
+      - :score: 3.6
+        :operator: send
+      - :score: 1.6
+        :operator: factory_by_name
+      - :score: 1.4
+        :operator: default_strategy
+      - :score: 1.3
+        :operator: "[]"
+      - :score: 1.2
+        :operator: assignment
+      - :score: 1.2
+        :operator: branch
+      :name: Factory#default_strategy
+    - :score: 7.5
+      :operators: 
+      - :score: 2.8
+        :operator: upcase
+      - :score: 2.6
+        :operator: branch
+      - :score: 2.6
+        :operator: gsub
+      - :score: 1.6
+        :operator: to_s
+      :name: Factory#variable_name_to_class_name
+    - :score: 6.2
+      :operators: 
+      - :score: 1.7
+        :operator: name
+      - :score: 1.5
+        :operator: ==
+      - :score: 1.5
+        :operator: assignment
+      - :score: 1.4
+        :operator: branch
+      - :score: 1.4
+        :operator: detect
+      - :score: 1.2
+        :operator: nil?
+      :name: Factory#attribute_defined?
+    - :score: 5.4
+      :operators: 
+      - :score: 2.6
+        :operator: to_sym
+      - :score: 1.5
+        :operator: class_name_to_variable_name
+      - :score: 1.2
+        :operator: respond_to?
+      - :score: 1.2
+        :operator: branch
+      :name: Factory#factory_name_for
+    - :score: 5.4
+      :operators: 
+      - :score: 1.4
+        :operator: block_pass
+      - :score: 1.3
+        :operator: next
+      - :score: 1.2
+        :operator: assignment
+      - :score: 1.2
+        :operator: add_attribute
+      - :score: 1.2
+        :operator: new
+      - :score: 1.2
+        :operator: branch
+      :name: Factory#sequence
+    - :score: 5.4
+      :operators: 
+      - :score: 4.8
+        :operator: assignment
+      - :score: 1.2
+        :operator: assert_valid_options
+      - :score: 1.2
+        :operator: factory_name_for
+      :name: Factory#initialize
+    - :score: 4.2
+      :operators: 
+      - :score: 1.5
+        :operator: variable_name_to_class_name
+      - :score: 1.3
+        :operator: const_get
+      - :score: 1.2
+        :operator: branch
+      - :score: 1.2
+        :operator: respond_to?
+      :name: Factory#class_for
+    - :score: 4.1
+      :operators: 
+      - :score: 1.4
+        :operator: variable_name_to_class_name
+      - :score: 1.3
+        :operator: raise
+      - :score: 1.2
+        :operator: branch
+      - :score: 1.2
+        :operator: const_defined?
+      :name: Factory#assert_valid_strategy
+    - :score: 2.9
+      :operators: 
+      - :score: 1.4
+        :operator: factory_by_name
+      - :score: 1.2
+        :operator: run
+      - :score: 1.2
+        :operator: assignment
+      :name: Factory#create
+    - :score: 2.9
+      :operators: 
+      - :score: 1.4
+        :operator: factory_by_name
+      - :score: 1.2
+        :operator: run
+      - :score: 1.2
+        :operator: assignment
+      :name: Factory#build
+    - :score: 2.9
+      :operators: 
+      - :score: 1.4
+        :operator: factory_by_name
+      - :score: 1.2
+        :operator: run
+      - :score: 1.2
+        :operator: assignment
+      :name: Factory#attributes_for
+    - :score: 2.9
+      :operators: 
+      - :score: 1.4
+        :operator: factory_by_name
+      - :score: 1.2
+        :operator: run
+      - :score: 1.2
+        :operator: assignment
+      :name: Factory#stub
+    - :score: 2.9
+      :operators: 
+      - :score: 1.4
+        :operator: class_name
+      - :score: 1.2
+        :operator: assignment
+      - :score: 1.2
+        :operator: class_for
+      :name: Factory#build_class
+    - :score: 2.9
+      :operators: 
+      - :score: 1.3
+        :operator: factory_name
+      - :score: 1.3
+        :operator: "[]"
+      - :score: 1.2
+        :operator: branch
+      :name: Factory#class_name
+    - :score: 2.6
+      :operators: 
+      - :score: 1.4
+        :operator: block_pass
+      - :score: 1.2
+        :operator: add_attribute
+      :name: Factory#method_missing
+    :average_score: 7.6
+    :score: 197.9
+    :highest_score: 21.9
+    :path: /lib/factory_girl/factory.rb
+  - :scanned_methods: 
+    - :score: 22.1
+      :operators: 
+      - :score: 19.5
+        :operator: send
+      - :score: 2.6
+        :operator: extend
+      :name: User#included
+    - :score: 14.1
+      :operators: 
+      - :score: 6.5
+        :operator: class_eval
+      - :score: 3.0
+        :operator: validates_presence_of
+      - :score: 1.5
+        :operator: validates_confirmation_of
+      - :score: 1.5
+        :operator: validates_uniqueness_of
+      - :score: 1.5
+        :operator: validates_format_of
+      - :score: 1.3
+        :operator: branch
+      :name: Validations#included
+    - :score: 10.5
+      :operators: 
+      - :score: 2.1
+        :operator: now
+      - :score: 1.9
+        :operator: utc
+      - :score: 1.7
+        :operator: password
+      - :score: 1.7
+        :operator: to_s
+      - :score: 1.5
+        :operator: assignment
+      - :score: 1.5
+        :operator: generate_hash
+      - :score: 1.4
+        :operator: branch
+      - :score: 1.4
+        :operator: new_record?
+      :name: InstanceMethods#initialize_salt
+    - :score: 8.9
+      :operators: 
+      - :score: 2.8
+        :operator: assignment
+      - :score: 2.0
+        :operator: now
+      - :score: 1.8
+        :operator: utc
+      - :score: 1.6
+        :operator: password
+      - :score: 1.6
+        :operator: to_s
+      - :score: 1.4
+        :operator: encrypt
+      :name: InstanceMethods#generate_token
+    - :score: 8.4
+      :operators: 
+      - :score: 3.2
+        :operator: token_expires_at
+      - :score: 1.9
+        :operator: now
+      - :score: 1.7
+        :operator: utc
+      - :score: 1.5
+        :operator: <
+      - :score: 1.4
+        :operator: branch
+      :name: InstanceMethods#remember?
+    - :score: 8.0
+      :operators: 
+      - :score: 6.5
+        :operator: class_eval
+      - :score: 1.4
+        :operator: attr_accessor
+      - :score: 1.3
+        :operator: branch
+      :name: AttrAccessor#included
+    - :score: 8.0
+      :operators: 
+      - :score: 6.5
+        :operator: class_eval
+      - :score: 1.4
+        :operator: attr_accessible
+      - :score: 1.3
+        :operator: branch
+      :name: AttrAccessible#included
+    - :score: 8.0
+      :operators: 
+      - :score: 6.5
+        :operator: class_eval
+      - :score: 1.4
+        :operator: before_save
+      - :score: 1.3
+        :operator: branch
+      :name: Callbacks#included
+    - :score: 7.4
+      :operators: 
+      - :score: 2.0
+        :operator: weeks
+      - :score: 1.8
+        :operator: from_now
+      - :score: 1.6
+        :operator: utc
+      - :score: 1.4
+        :operator: remember_me_until!
+      - :score: 0.6
+        :operator: lit_fixnum
+      :name: InstanceMethods#remember_me!
+    - :score: 6.6
+      :operators: 
+      - :score: 2.8
+        :operator: assignment
+      - :score: 1.6
+        :operator: token_expires_at
+      - :score: 1.6
+        :operator: password
+      - :score: 1.4
+        :operator: encrypt
+      - :score: 1.4
+        :operator: save
+      :name: InstanceMethods#remember_me_until!
+    - :score: 6.6
+      :operators: 
+      - :score: 3.0
+        :operator: blank?
+      - :score: 1.7
+        :operator: password
+      - :score: 1.7
+        :operator: encrypted_password
+      - :score: 1.4
+        :operator: branch
+      :name: InstanceMethods#password_required?
+    - :score: 6.3
+      :operators: 
+      - :score: 3.2
+        :operator: password
+      - :score: 1.4
+        :operator: blank?
+      - :score: 1.4
+        :operator: branch
+      - :score: 1.4
+        :operator: encrypt
+      - :score: 1.4
+        :operator: assignment
+      :name: InstanceMethods#encrypt_password
+    - :score: 5.3
+      :operators: 
+      - :score: 2.8
+        :operator: assignment
+      - :score: 1.5
+        :operator: clear_token
+      - :score: 1.4
+        :operator: save
+      - :score: 1.4
+        :operator: branch
+      - :score: 1.4
+        :operator: valid?
+      :name: InstanceMethods#update_password
+    - :score: 4.6
+      :operators: 
+      - :score: 1.6
+        :operator: encrypted_password
+      - :score: 1.6
+        :operator: encrypt
+      - :score: 1.4
+        :operator: ==
+      :name: InstanceMethods#authenticated?
+    - :score: 3.9
+      :operators: 
+      - :score: 2.6
+        :operator: branch
+      - :score: 1.3
+        :operator: assignment
+      - :score: 1.3
+        :operator: find_by_email
+      - :score: 1.3
+        :operator: authenticated?
+      :name: ClassMethods#authenticate
+    - :score: 3.2
+      :operators: 
+      - :score: 1.5
+        :operator: generate_token
+      - :score: 1.4
+        :operator: new_record?
+      - :score: 1.4
+        :operator: branch
+      :name: InstanceMethods#initialize_token
+    - :score: 3.1
+      :operators: 
+      - :score: 2.8
+        :operator: assignment
+      - :score: 1.4
+        :operator: save
+      :name: InstanceMethods#confirm_email!
+    - :score: 3.0
+      :operators: 
+      - :score: 1.6
+        :operator: salt
+      - :score: 1.4
+        :operator: generate_hash
+      :name: InstanceMethods#encrypt
+    - :score: 2.8
+      :operators: 
+      - :score: 1.4
+        :operator: generate_token
+      - :score: 1.4
+        :operator: save
+      :name: InstanceMethods#forgot_password!
+    - :score: 2.8
+      :operators: 
+      - :score: 1.4
+        :operator: clear_token
+      - :score: 1.4
+        :operator: save
+      :name: InstanceMethods#forget_me!
+    - :score: 2.8
+      :operators: 
+      - :score: 2.8
+        :operator: assignment
+      :name: InstanceMethods#clear_token
+    - :score: 1.4
+      :operators: 
+      - :score: 1.4
+        :operator: hexdigest
+      :name: InstanceMethods#generate_hash
+    - :score: 1.3
+      :operators: 
+      - :score: 1.3
+        :operator: protected
+      :name: InstanceMethods#none
+    - :score: 1.1
+      :operators: 
+      - :score: 1.1
+        :operator: require
+      :name: main#none
+    :average_score: 6.3
+    :score: 150.2
+    :highest_score: 22.1
+    :path: /lib/clearance/user.rb
+  - :scanned_methods: 
+    - :score: 13.9
+      :operators: 
+      - :score: 6.0
+        :operator: class_eval
+      - :score: 3.6
+        :operator: send
+      - :score: 2.8
+        :operator: helper_method
+      - :score: 1.4
+        :operator: hide_action
+      - :score: 1.2
+        :operator: branch
+      :name: Authentication#included
+    - :score: 10.4
+      :operators: 
+      - :score: 4.3
+        :operator: branch
+      - :score: 3.4
+        :operator: session
+      - :score: 3.0
+        :operator: "[]"
+      - :score: 1.5
+        :operator: find_by_id
+      - :score: 1.5
+        :operator: email_confirmed?
+      - :score: 1.5
+        :operator: assignment
+      :name: InstanceMethods#user_from_session
+    - :score: 9.9
+      :operators: 
+      - :score: 4.8
+        :operator: "[]"
+      - :score: 3.6
+        :operator: params
+      - :score: 1.4
+        :operator: ==
+      - :score: 1.3
+        :operator: branch
+      :name: InstanceMethods#remember?
+    - :score: 7.7
+      :operators: 
+      - :score: 4.3
+        :operator: branch
+      - :score: 2.8
+        :operator: assignment
+      - :score: 1.5
+        :operator: find_by_token
+      - :score: 1.5
+        :operator: remember?
+      - :score: 1.5
+        :operator: cookies
+      - :score: 1.3
+        :operator: "[]"
+      :name: InstanceMethods#user_from_cookie
+    - :score: 7.4
+      :operators: 
+      - :score: 3.1
+        :operator: request
+      - :score: 1.4
+        :operator: session
+      - :score: 1.4
+        :operator: assignment
+      - :score: 1.4
+        :operator: request_uri
+      - :score: 1.3
+        :operator: get?
+      - :score: 1.3
+        :operator: branch
+      :name: InstanceMethods#store_location
+    - :score: 6.9
+      :operators: 
+      - :score: 4.0
+        :operator: assignment
+      - :score: 1.5
+        :operator: new_session_url
+      - :score: 1.4
+        :operator: flash
+      - :score: 1.3
+        :operator: redirect_to
+      - :score: 1.3
+        :operator: store_location
+      - :score: 1.3
+        :operator: branch
+      :name: InstanceMethods#deny_access
+    - :score: 6.1
+      :operators: 
+      - :score: 2.8
+        :operator: "[]"
+      - :score: 1.6
+        :operator: session
+      - :score: 1.6
+        :operator: params
+      - :score: 1.3
+        :operator: branch
+      :name: InstanceMethods#return_to
+    - :score: 5.7
+      :operators: 
+      - :score: 1.5
+        :operator: cookies
+      - :score: 1.4
+        :operator: forget_me!
+      - :score: 1.3
+        :operator: delete
+      - :score: 1.3
+        :operator: reset_session
+      - :score: 1.3
+        :operator: branch
+      :name: InstanceMethods#forget
+    - :score: 5.4
+      :operators: 
+      - :score: 1.3
+        :operator: token
+      - :score: 1.3
+        :operator: token_expires_at
+      - :score: 1.3
+        :operator: cookies
+      - :score: 1.3
+        :operator: assignment
+      - :score: 1.3
+        :operator: remember_me!
+      :name: InstanceMethods#remember
+    - :score: 4.5
+      :operators: 
+      - :score: 1.6
+        :operator: return_to
+      - :score: 1.5
+        :operator: branch
+      - :score: 1.3
+        :operator: redirect_to
+      - :score: 1.3
+        :operator: clear_return_to
+      :name: InstanceMethods#redirect_back_or
+    - :score: 3.4
+      :operators: 
+      - :score: 1.4
+        :operator: id
+      - :score: 1.4
+        :operator: session
+      - :score: 1.4
+        :operator: assignment
+      - :score: 1.3
+        :operator: branch
+      :name: InstanceMethods#sign_in
+    - :score: 3.3
+      :operators: 
+      - :score: 1.4
+        :operator: user_from_session
+      - :score: 1.4
+        :operator: user_from_cookie
+      - :score: 1.3
+        :operator: branch
+      - :score: 1.3
+        :operator: assignment
+      :name: InstanceMethods#current_user
+    - :score: 3.0
+      :operators: 
+      - :score: 1.4
+        :operator: deny_access
+      - :score: 1.3
+        :operator: branch
+      - :score: 1.3
+        :operator: signed_in?
+      :name: InstanceMethods#authenticate
+    - :score: 2.8
+      :operators: 
+      - :score: 1.5
+        :operator: root_url
+      - :score: 1.3
+        :operator: redirect_to
+      :name: InstanceMethods#redirect_to_root
+    - :score: 2.8
+      :operators: 
+      - :score: 1.5
+        :operator: current_user
+      - :score: 1.3
+        :operator: nil?
+      :name: InstanceMethods#signed_in?
+    - :score: 2.6
+      :operators: 
+      - :score: 1.3
+        :operator: sign_in
+      - :score: 1.3
+        :operator: warn
+      :name: InstanceMethods#sign_user_in
+    - :score: 1.8
+      :operators: 
+      - :score: 1.3
+        :operator: session
+      - :score: 1.3
+        :operator: assignment
+      :name: InstanceMethods#clear_return_to
+    - :score: 1.2
+      :operators: 
+      - :score: 1.2
+        :operator: protected
+      :name: InstanceMethods#none
+    :average_score: 5.5
+    :score: 98.9
+    :highest_score: 13.9
+    :path: /lib/clearance/authentication.rb
+  - :scanned_methods: 
+    - :score: 9.6
+      :operators: 
+      - :score: 2.8
+        :operator: assignment
+      - :score: 1.8
+        :operator: name
+      - :score: 1.6
+        :operator: underscore
+      - :score: 1.5
+        :operator: yield
+      - :score: 1.4
+        :operator: block_given?
+      - :score: 1.4
+        :operator: save
+      - :score: 1.4
+        :operator: build
+      - :score: 1.4
+        :operator: branch
+      :name: ClassMethods#generate
+    - :score: 8.3
+      :operators: 
+      - :score: 2.8
+        :operator: assignment
+      - :score: 1.8
+        :operator: name
+      - :score: 1.6
+        :operator: underscore
+      - :score: 1.5
+        :operator: yield
+      - :score: 1.4
+        :operator: build
+      - :score: 1.4
+        :operator: block_given?
+      - :score: 1.4
+        :operator: branch
+      :name: ClassMethods#spawn
+    - :score: 8.3
+      :operators: 
+      - :score: 2.8
+        :operator: assignment
+      - :score: 1.8
+        :operator: name
+      - :score: 1.6
+        :operator: underscore
+      - :score: 1.5
+        :operator: yield
+      - :score: 1.4
+        :operator: block_given?
+      - :score: 1.4
+        :operator: branch
+      - :score: 1.4
+        :operator: create
+      :name: ClassMethods#generate!
+    - :score: 3.3
+      :operators: 
+      - :score: 3.3
+        :operator: send
+      :name: main#none
+    - :score: 2.6
+      :operators: 
+      - :score: 2.6
+        :operator: extend
+      :name: ActiveRecord#included
+    :average_score: 6.4
+    :score: 32.1
+    :highest_score: 9.6
+    :path: /lib/factory_girl/syntax/generate.rb
+  - :scanned_methods: 
+    - :score: 17.9
+      :operators: 
+      - :score: 7.1
+        :operator: assignment
+      - :score: 4.3
+        :operator: to_s
+      - :score: 3.4
+        :operator: branch
+      - :score: 2.1
+        :operator: sub
+      - :score: 1.9
+        :operator: to_sym
+      - :score: 1.8
+        :operator: match
+      - :score: 1.8
+        :operator: aliases
+      - :score: 1.6
+        :operator: collect
+      - :score: 1.4
+        :operator: compact
+      - :score: 1.2
+        :operator: "<<"
+      :name: Factory#aliases_for
+    - :score: 7.2
+      :operators: 
+      - :score: 5.5
+        :operator: sclass
+      - :score: 1.6
+        :operator: attr_accessor
+      - :score: 1.1
+        :operator: assignment
+      :name: Factory#none
+    - :score: 2.6
+      :operators: 
+      - :score: 1.4
+        :operator: aliases
+      - :score: 1.2
+        :operator: "<<"
+      :name: Factory#alias
+    :average_score: 9.2
+    :score: 27.7
+    :highest_score: 17.9
+    :path: /lib/factory_girl/aliases.rb
+  - :scanned_methods: 
+    - :score: 23.6
+      :operators: 
+      - :score: 14.3
+        :operator: require
+      - :score: 2.8
+        :operator: join
+      - :score: 2.6
+        :operator: find_definitions
+      - :score: 2.5
+        :operator: configuration
+      - :score: 2.3
+        :operator: branch
+      - :score: 1.4
+        :operator: assignment
+      - :score: 1.2
+        :operator: after_initialize
+      :name: main#none
+    - :score: 1.7
+      :operators: 
+      - :score: 1.2
+        :operator: default_strategy
+      - :score: 1.2
+        :operator: assignment
+      :name: main#Factory
+    :average_score: 12.6
+    :score: 25.3
+    :highest_score: 23.6
+    :path: /lib/factory_girl.rb
+  - :scanned_methods: 
+    - :score: 8.2
+      :operators: 
+      - :score: 3.0
+        :operator: sequences
+      - :score: 1.4
+        :operator: "[]"
+      - :score: 1.3
+        :operator: raise
+      - :score: 1.2
+        :operator: next
+      - :score: 1.2
+        :operator: branch
+      - :score: 1.2
+        :operator: key?
+      :name: Factory#next
+    - :score: 7.2
+      :operators: 
+      - :score: 5.5
+        :operator: sclass
+      - :score: 1.6
+        :operator: attr_accessor
+      - :score: 1.1
+        :operator: assignment
+      :name: Factory#none
+    - :score: 4.0
+      :operators: 
+      - :score: 1.4
+        :operator: block_pass
+      - :score: 1.2
+        :operator: assignment
+      - :score: 1.2
+        :operator: new
+      - :score: 1.2
+        :operator: sequences
+      :name: Factory#sequence
+    - :score: 3.2
+      :operators: 
+      - :score: 1.3
+        :operator: call
+      - :score: 1.3
+        :operator: +
+      - :score: 1.3
+        :operator: assignment
+      - :score: 0.4
+        :operator: lit_fixnum
+      :name: Sequence#next
+    - :score: 2.6
+      :operators: 
+      - :score: 2.6
+        :operator: assignment
+      :name: Sequence#initialize
+    :average_score: 5.0
+    :score: 25.2
+    :highest_score: 8.2
+    :path: /lib/factory_girl/sequence.rb
+  - :scanned_methods: 
+    - :score: 20.9
+      :operators: 
+      - :score: 10.0
+        :operator: assignment
+      - :score: 4.0
+        :operator: puts
+      - :score: 3.6
+        :operator: branch
+      - :score: 2.6
+        :operator: api_key
+      - :score: 2.4
+        :operator: blank?
+      - :score: 1.4
+        :operator: body
+      - :score: 1.4
+        :operator: "[]"
+      - :score: 1.4
+        :operator: host
+      - :score: 1.2
+        :operator: parse
+      - :score: 1.2
+        :operator: ===
+      - :score: 1.2
+        :operator: post_form
+      - :score: 1.2
+        :operator: each
+      :name: HoptoadTasks#deploy
+    - :score: 3.3
+      :operators: 
+      - :score: 3.3
+        :operator: require
+      :name: main#none
+    :average_score: 12.1
+    :score: 24.2
+    :highest_score: 20.9
+    :path: /lib/hoptoad_tasks.rb
+  - :scanned_methods: 
+    - :score: 16.2
+      :operators: 
+      - :score: 7.5
+        :operator: send
+      - :score: 7.5
+        :operator: sclass
+      - :score: 1.2
+        :operator: branch
+      - :score: 1.2
+        :operator: respond_to?
+      :name: Stub#set
+    - :score: 3.6
+      :operators: 
+      - :score: 3.6
+        :operator: send
+      :name: Stub#get
+    - :score: 1.7
+      :operators: 
+      - :score: 1.2
+        :operator: assignment
+      - :score: 1.2
+        :operator: new
+      :name: Stub#initialize
+    - :score: 1.2
+      :operators: 
+      - :score: 1.2
+        :operator: set
+      :name: Stub#associate
+    :average_score: 5.7
+    :score: 22.7
+    :highest_score: 16.2
+    :path: /lib/factory_girl/proxy/stub.rb
+  - :scanned_methods: 
+    - :score: 15.3
+      :operators: 
+      - :score: 6.5
+        :operator: instance_eval
+      - :score: 2.6
+        :operator: assignment
+      - :score: 1.7
+        :operator: name
+      - :score: 1.5
+        :operator: underscore
+      - :score: 1.5
+        :operator: block_pass
+      - :score: 1.3
+        :operator: factories
+      - :score: 1.3
+        :operator: factory_name
+      - :score: 1.3
+        :operator: new
+      :name: ClassMethods#blueprint
+    - :score: 3.3
+      :operators: 
+      - :score: 3.3
+        :operator: send
+      :name: main#none
+    - :score: 2.6
+      :operators: 
+      - :score: 2.6
+        :operator: extend
+      :name: ActiveRecord#included
+    :average_score: 7.1
+    :score: 21.2
+    :highest_score: 15.3
+    :path: /lib/factory_girl/syntax/blueprint.rb
+  - :scanned_methods: 
+    - :score: 3.6
+      :operators: 
+      - :score: 3.6
+        :operator: send
+      :name: Build#get
+    - :score: 3.6
+      :operators: 
+      - :score: 3.6
+        :operator: send
+      :name: Build#set
+    - :score: 2.6
+      :operators: 
+      - :score: 1.4
+        :operator: create
+      - :score: 1.2
+        :operator: set
+      :name: Build#associate
+    - :score: 1.7
+      :operators: 
+      - :score: 1.2
+        :operator: assignment
+      - :score: 1.2
+        :operator: create
+      :name: Build#association
+    - :score: 1.7
+      :operators: 
+      - :score: 1.2
+        :operator: assignment
+      - :score: 1.2
+        :operator: new
+      :name: Build#initialize
+    :average_score: 2.6
+    :score: 13.2
+    :highest_score: 3.6
+    :path: /lib/factory_girl/proxy/build.rb
+  - :scanned_methods: 
+    - :score: 8.6
+      :operators: 
+      - :score: 2.6
+        :operator: assignment
+      - :score: 1.5
+        :operator: configuration_files
+      - :score: 1.4
+        :operator: add_configuration_file
+      - :score: 1.3
+        :operator: join
+      - :score: 1.3
+        :operator: load_routes_without_clearance!
+      - :score: 1.3
+        :operator: include?
+      - :score: 1.3
+        :operator: dirname
+      - :score: 1.3
+        :operator: branch
+      :name: ActionController::Routing::RouteSet#load_routes_with_clearance!
+    - :score: 1.2
+      :operators: 
+      - :score: 1.2
+        :operator: alias_method_chain
+      :name: ActionController::Routing::RouteSet#none
+    - :score: 1.0
+      :operators: 
+      - :score: 1.0
+        :operator: branch
+      :name: main#none
+    :average_score: 3.6
+    :score: 10.8
+    :highest_score: 8.6
+    :path: /lib/clearance/extensions/routes.rb
+  - :scanned_methods: 
+    - :score: 5.8
+      :operators: 
+      - :score: 1.6
+        :operator: block_pass
+      - :score: 1.4
+        :operator: next
+      - :score: 1.4
+        :operator: sequence
+      - :score: 1.3
+        :operator: block_given?
+      - :score: 1.3
+        :operator: branch
+      :name: Sham#method_missing
+    - :score: 2.8
+      :operators: 
+      - :score: 1.5
+        :operator: block_pass
+      - :score: 1.3
+        :operator: method_missing
+      :name: Sham#name
+    - :score: 2.2
+      :operators: 
+      - :score: 2.2
+        :operator: include
+      :name: main#none
+    :average_score: 3.6
+    :score: 10.8
+    :highest_score: 5.8
+    :path: /lib/factory_girl/syntax/sham.rb
+  - :scanned_methods: 
+    - :score: 4.7
+      :operators: 
+      - :score: 1.7
+        :operator: name
+      - :score: 1.5
+        :operator: underscore
+      - :score: 1.3
+        :operator: assignment
+      - :score: 1.3
+        :operator: create
+      :name: ClassMethods#make
+    - :score: 3.3
+      :operators: 
+      - :score: 3.3
+        :operator: send
+      :name: main#none
+    - :score: 2.6
+      :operators: 
+      - :score: 2.6
+        :operator: extend
+      :name: ActiveRecord#included
+    :average_score: 3.5
+    :score: 10.6
+    :highest_score: 4.7
+    :path: /lib/factory_girl/syntax/make.rb
+  - :scanned_methods: 
+    - :score: 6.5
+      :operators: 
+      - :score: 1.4
+        :operator: name
+      - :score: 1.3
+        :operator: raise
+      - :score: 1.2
+        :operator: call
+      - :score: 1.2
+        :operator: branch
+      - :score: 1.2
+        :operator: ===
+      - :score: 1.2
+        :operator: assignment
+      - :score: 1.2
+        :operator: set
+      :name: Dynamic#add_to
+    - :score: 1.7
+      :operators: 
+      - :score: 1.2
+        :operator: super
+      - :score: 1.2
+        :operator: assignment
+      :name: Dynamic#initialize
+    :average_score: 4.1
+    :score: 8.2
+    :highest_score: 6.5
+    :path: /lib/factory_girl/attribute/dynamic.rb
+  - :scanned_methods: 
+    - :score: 6.6
+      :operators: 
+      - :score: 2.8
+        :operator: assignment
+      - :score: 1.7
+        :operator: +
+      - :score: 1.5
+        :operator: raise
+      - :score: 1.3
+        :operator: branch
+      - :score: 1.3
+        :operator: to_sym
+      - :score: 1.3
+        :operator: to_s
+      :name: Attribute#initialize
+    - :score: 1.2
+      :operators: 
+      - :score: 1.2
+        :operator: attr_reader
+      :name: Attribute#none
+    :average_score: 3.9
+    :score: 7.8
+    :highest_score: 6.6
+    :path: /lib/factory_girl/attribute.rb
+  - :scanned_methods: 
+    - :score: 5.5
+      :operators: 
+      - :score: 5.5
+        :operator: require
+      :name: main#none
+    :average_score: 5.5
+    :score: 5.5
+    :highest_score: 5.5
+    :path: /lib/clearance.rb
+  - :scanned_methods: 
+    - :score: 2.7
+      :operators: 
+      - :score: 2.4
+        :operator: assignment
+      - :score: 1.2
+        :operator: super
+      :name: Association#initialize
+    - :score: 2.6
+      :operators: 
+      - :score: 1.4
+        :operator: name
+      - :score: 1.2
+        :operator: associate
+      :name: Association#add_to
+    :average_score: 2.6
+    :score: 5.3
+    :highest_score: 2.7
+    :path: /lib/factory_girl/attribute/association.rb
+  - :scanned_methods: 
+    - :score: 2.6
+      :operators: 
+      - :score: 1.4
+        :operator: name
+      - :score: 1.2
+        :operator: set
+      :name: Static#add_to
+    - :score: 1.7
+      :operators: 
+      - :score: 1.2
+        :operator: super
+      - :score: 1.2
+        :operator: assignment
+      :name: Static#initialize
+    :average_score: 2.1
+    :score: 4.3
+    :highest_score: 2.6
+    :path: /lib/factory_girl/attribute/static.rb
+  - :scanned_methods: 
+    - :score: 1.2
+      :operators: 
+      - :score: 1.2
+        :operator: raise
+      :name: Proxy#result
+    - :score: 1.2
+      :operators: 
+      - :score: 1.2
+        :operator: assignment
+      :name: Proxy#association
+    - :score: 1.2
+      :operators: 
+      - :score: 1.2
+        :operator: get
+      :name: Proxy#method_missing
+    :average_score: 1.2
+    :score: 3.6
+    :highest_score: 1.2
+    :path: /lib/factory_girl/proxy.rb
+  - :scanned_methods: 
+    - :score: 1.2
+      :operators: 
+      - :score: 1.2
+        :operator: assignment
+      :name: AttributesFor#initialize
+    - :score: 1.2
+      :operators: 
+      - :score: 1.2
+        :operator: "[]"
+      :name: AttributesFor#get
+    - :score: 1.2
+      :operators: 
+      - :score: 1.2
+        :operator: assignment
+      :name: AttributesFor#set
+    :average_score: 1.2
+    :score: 3.6
+    :highest_score: 1.2
+    :path: /lib/factory_girl/proxy/attributes_for.rb
+  - :scanned_methods: 
+    - :score: 2.6
+      :operators: 
+      - :score: 1.3
+        :operator: rescue_responses
+      - :score: 1.1
+        :operator: update
+      - :score: 1.0
+        :operator: branch
+      :name: main#none
+    :average_score: 2.6
+    :score: 2.6
+    :highest_score: 2.6
+    :path: /lib/clearance/extensions/rescue.rb
+  - :scanned_methods: 
+    - :score: 1.1
+      :operators: 
+      - :score: 1.1
+        :operator: save!
+      :name: Create#result
+    :average_score: 1.1
+    :score: 1.1
+    :highest_score: 1.1
+    :path: /lib/factory_girl/proxy/create.rb
+  - :scanned_methods: 
+    - :score: 1.0
+      :operators: 
+      - :score: 1.0
+        :operator: branch
+      :name: main#none
+    :average_score: 1.0
+    :score: 1.0
+    :highest_score: 1.0
+    :path: /lib/clearance/extensions/errors.rb
+  :total: 1179.5
+:flay: 
+  :matches: []
+
+  :total_score: "0"
+:reek: 
+  :matches: 
+  - :code_smells: 
+    - :type: Control Couple
+      :method: Clearance::Authentication::InstanceMethods::deny_access
+      :message: is controlled by argument flash_message
+    - :type: Control Couple
+      :method: Clearance::Authentication::InstanceMethods::forget
+      :message: is controlled by argument user
+    - :type: Feature Envy
+      :method: Clearance::Authentication::InstanceMethods::remember
+      :message: refers to user more than self
+    - :type: Duplication
+      :method: Clearance::Authentication::InstanceMethods::remember?
+      :message: calls params[session] multiple times
+    - :type: Control Couple
+      :method: Clearance::Authentication::InstanceMethods::sign_in
+      :message: is controlled by argument user
+    - :type: Duplication
+      :method: Clearance::Authentication::InstanceMethods::user_from_session
+      :message: calls session[user_id] multiple times
+    :file_path: lib/clearance/authentication.rb
+  - :code_smells: 
+    - :type: Utility Function
+      :method: Clearance::User::InstanceMethods::generate_hash
+      :message: doesn't depend on instance state
+    - :type: Long Method
+      :method: Clearance::User::Validations::self.included
+      :message: has approx 6 statements
+    - :type: Long Method
+      :method: Clearance::User::self.included
+      :message: has approx 6 statements
+    :file_path: lib/clearance/user.rb
+:rcov: 
+  rails/init.rb: 
+    :percent_run: 100
+    :lines: 
+    - :content: "   require 'clearance'"
+      :was_run: true
+  :global_percent_run: 77.2
+  shoulda_macros/clearance.rb: 
+    :percent_run: 77
+    :lines: 
+    - :content: "   module Clearance"
+      :was_run: true
+    - :content: "     module Shoulda"
+      :was_run: true
+    - :content: "   "
+      :was_run: true
+    - :content: "       # STATE OF AUTHENTICATION"
+      :was_run: true
+    - :content: "   "
+      :was_run: true
+    - :content: "       def should_be_signed_in_as(&block)"
+      :was_run: true
+    - :content: "         should \"be signed in as #{block.bind(self).call}\" do"
+      :was_run: true
+    - :content: "           user = block.bind(self).call"
+      :was_run: true
+    - :content: "           assert_not_nil user,"
+      :was_run: true
+    - :content: "             \"please pass a User. try: should_be_signed_in_as { @user }\""
+      :was_run: true
+    - :content: "           assert_equal user, @controller.send(:current_user),"
+      :was_run: true
+    - :content: "             \"#{user.inspect} is not the current_user, \" <<"
+      :was_run: true
+    - :content: "             \"which is #{@controller.send(:current_user).inspect}\""
+      :was_run: true
+    - :content: "         end"
+      :was_run: true
+    - :content: "       end"
+      :was_run: true
+    - :content: "   "
+      :was_run: true
+    - :content: "       def should_be_signed_in_and_email_confirmed_as(&block)"
+      :was_run: true
+    - :content: "         warn \"[DEPRECATION] should_be_signed_in_and_email_confirmed_as: questionable usefulness\""
+      :was_run: false
+    - :content: "         should_be_signed_in_as &block"
+      :was_run: false
+    - :content: "   "
+      :was_run: false
+    - :content: "         should \"have confirmed email\" do"
+      :was_run: false
+    - :content: "           user = block.bind(self).call"
+      :was_run: false
+    - :content: "   "
+      :was_run: false
+    - :content: "           assert_not_nil user"
+      :was_run: false
+    - :content: "           assert_equal user, assigns(:user)"
+      :was_run: false
+    - :content: "           assert assigns(:user).email_confirmed?"
+      :was_run: false
+    - :content: "         end"
+      :was_run: false
+    - :content: "       end"
+      :was_run: false
+    - :content: "   "
+      :was_run: true
+    - :content: "       def should_not_be_signed_in"
+      :was_run: true
+    - :content: "         should \"not be signed in\" do"
+      :was_run: true
+    - :content: "           assert_nil session[:user_id]"
+      :was_run: true
+    - :content: "         end"
+      :was_run: true
+    - :content: "       end"
+      :was_run: true
+    - :content: "   "
+      :was_run: true
+    - :content: "       def should_deny_access_on(http_method, action, opts = {})"
+      :was_run: true
+    - :content: "         warn \"[DEPRECATION] should_deny_access_on: use a setup & should_deny_access(:flash => ?)\""
+      :was_run: true
+    - :content: "         flash_message = opts.delete(:flash)"
+      :was_run: true
+    - :content: "         context \"on #{http_method} to #{action}\" do"
+      :was_run: true
+    - :content: "           setup do"
+      :was_run: true
+    - :content: "             send(http_method, action, opts)"
+      :was_run: true
+    - :content: "           end"
+      :was_run: true
+    - :content: "   "
+      :was_run: true
+    - :content: "           should_deny_access(:flash => flash_message)"
+      :was_run: true
+    - :content: "         end"
+      :was_run: true
+    - :content: "       end"
+      :was_run: true
+    - :content: "   "
+      :was_run: true
+    - :content: "       def should_deny_access(opts = {})"
+      :was_run: true
+    - :content: "         if opts[:flash]"
+      :was_run: true
+    - :content: "           should_set_the_flash_to opts[:flash]"
+      :was_run: true
+    - :content: "         else"
+      :was_run: true
+    - :content: "           should_not_set_the_flash"
+      :was_run: true
+    - :content: "         end"
+      :was_run: true
+    - :content: "   "
+      :was_run: true
+    - :content: "         should_redirect_to('new_session_url') { new_session_url }"
+      :was_run: true
+    - :content: "       end"
+      :was_run: true
+    - :content: "   "
+      :was_run: true
+    - :content: "       # HTTP FLUENCY"
+      :was_run: true
+    - :content: "   "
+      :was_run: true
+    - :content: "       def should_forbid(description, &block)"
+      :was_run: true
+    - :content: "         should \"forbid #{description}\" do"
+      :was_run: true
+    - :content: "           assert_raises ActionController::Forbidden do"
+      :was_run: true
+    - :content: "             instance_eval(&block)"
+      :was_run: true
+    - :content: "           end"
+      :was_run: true
+    - :content: "         end"
+      :was_run: true
+    - :content: "       end"
+      :was_run: true
+    - :content: "   "
+      :was_run: true
+    - :content: "       # CONTEXTS"
+      :was_run: true
+    - :content: "   "
+      :was_run: true
+    - :content: "       def signed_in_user_context(&blk)"
+      :was_run: true
+    - :content: "         warn \"[DEPRECATION] signed_in_user_context: creates a Mystery Guest, causes Obscure Test\""
+      :was_run: true
+    - :content: "         context \"A signed in user\" do"
+      :was_run: true
+    - :content: "           setup do"
+      :was_run: true
+    - :content: "             @user = Factory(:user)"
+      :was_run: true
+    - :content: "             @user.confirm_email!"
+      :was_run: true
+    - :content: "             sign_in_as @user"
+      :was_run: true
+    - :content: "           end"
+      :was_run: true
+    - :content: "           merge_block(&blk)"
+      :was_run: true
+    - :content: "         end"
+      :was_run: true
+    - :content: "       end"
+      :was_run: true
+    - :content: "   "
+      :was_run: true
+    - :content: "       def public_context(&blk)"
+      :was_run: true
+    - :content: "         warn \"[DEPRECATION] public_context: common case is no-op. call sign_out otherwise\""
+      :was_run: false
+    - :content: "         context \"The public\" do"
+      :was_run: false
+    - :content: "           setup { sign_out }"
+      :was_run: false
+    - :content: "           merge_block(&blk)"
+      :was_run: false
+    - :content: "         end"
+      :was_run: false
+    - :content: "       end"
+      :was_run: false
+    - :content: "   "
+      :was_run: true
+    - :content: "       # CREATING USERS"
+      :was_run: true
+    - :content: "   "
+      :was_run: true
+    - :content: "       def should_create_user_successfully"
+      :was_run: true
+    - :content: "         warn \"[DEPRECATION] should_create_user_successfully: not meant to be public, no longer used internally\""
+      :was_run: true
+    - :content: "         should_assign_to :user"
+      :was_run: true
+    - :content: "         should_change 'User.count', :by => 1"
+      :was_run: true
+    - :content: "   "
+      :was_run: true
+    - :content: "         should \"send the confirmation email\" do"
+      :was_run: true
+    - :content: "           assert_sent_email do |email|"
+      :was_run: true
+    - :content: "             email.subject =~ /account confirmation/i"
+      :was_run: true
+    - :content: "           end"
+      :was_run: true
+    - :content: "         end"
+      :was_run: true
+    - :content: "   "
+      :was_run: true
+    - :content: "         should_set_the_flash_to /confirm/i"
+      :was_run: true
+    - :content: "         should_redirect_to_url_after_create"
+      :was_run: true
+    - :content: "       end"
+      :was_run: true
+    - :content: "   "
+      :was_run: true
+    - :content: "       # RENDERING"
+      :was_run: true
+    - :content: "   "
+      :was_run: true
+    - :content: "       def should_render_nothing"
+      :was_run: true
+    - :content: "         should \"render nothing\" do"
+      :was_run: false
+    - :content: "           assert @response.body.blank?"
+      :was_run: false
+    - :content: "         end"
+      :was_run: false
+    - :content: "       end"
+      :was_run: false
+    - :content: "   "
+      :was_run: true
+    - :content: "       # REDIRECTS"
+      :was_run: true
+    - :content: "   "
+      :was_run: true
+    - :content: "       def should_redirect_to_url_after_create"
+      :was_run: true
+    - :content: "         should_redirect_to(\"the post-create url\") do"
+      :was_run: true
+    - :content: "           @controller.send(:url_after_create)"
+      :was_run: true
+    - :content: "         end"
+      :was_run: true
+    - :content: "       end"
+      :was_run: true
+    - :content: "   "
+      :was_run: true
+    - :content: "       def should_redirect_to_url_after_update"
+      :was_run: true
+    - :content: "         should_redirect_to(\"the post-update url\") do"
+      :was_run: true
+    - :content: "           @controller.send(:url_after_update)"
+      :was_run: true
+    - :content: "         end"
+      :was_run: true
+    - :content: "       end"
+      :was_run: true
+    - :content: "   "
+      :was_run: true
+    - :content: "       def should_redirect_to_url_after_destroy"
+      :was_run: true
+    - :content: "         should_redirect_to(\"the post-destroy url\") do"
+      :was_run: true
+    - :content: "           @controller.send(:url_after_destroy)"
+      :was_run: true
+    - :content: "         end"
+      :was_run: true
+    - :content: "       end"
+      :was_run: true
+    - :content: "   "
+      :was_run: true
+    - :content: "       # VALIDATIONS"
+      :was_run: true
+    - :content: "   "
+      :was_run: true
+    - :content: "       def should_validate_confirmation_of(attribute, opts = {})"
+      :was_run: true
+    - :content: "         warn \"[DEPRECATION] should_validate_confirmation_of: not meant to be public, no longer used internally\""
+      :was_run: false
+    - :content: "         raise ArgumentError if opts[:factory].nil?"
+      :was_run: false
+    - :content: "   "
+      :was_run: false
+    - :content: "         context \"on save\" do"
+      :was_run: false
+    - :content: "           should_validate_confirmation_is_not_blank opts[:factory], attribute"
+      :was_run: false
+    - :content: "           should_validate_confirmation_is_not_bad   opts[:factory], attribute"
+      :was_run: false
+    - :content: "         end"
+      :was_run: false
+    - :content: "       end"
+      :was_run: false
+    - :content: "   "
+      :was_run: true
+    - :content: "       def should_validate_confirmation_is_not_blank(factory, attribute, opts = {})"
+      :was_run: true
+    - :content: "         warn \"[DEPRECATION] should_validate_confirmation_is_not_blank: not meant to be public, no longer used internally\""
+      :was_run: false
+    - :content: "         should \"validate #{attribute}_confirmation is not blank\" do"
+      :was_run: false
+    - :content: "           model = Factory.build(factory, blank_confirmation_options(attribute))"
+      :was_run: false
+    - :content: "           model.save"
+      :was_run: false
+    - :content: "           assert_confirmation_error(model, attribute,"
+      :was_run: false
+    - :content: "             \"#{attribute}_confirmation cannot be blank\")"
+      :was_run: false
+    - :content: "         end"
+      :was_run: false
+    - :content: "       end"
+      :was_run: false
+    - :content: "   "
+      :was_run: true
+    - :content: "       def should_validate_confirmation_is_not_bad(factory, attribute, opts = {})"
+      :was_run: true
+    - :content: "         warn \"[DEPRECATION] should_validate_confirmation_is_not_bad: not meant to be public, no longer used internally\""
+      :was_run: false
+    - :content: "         should \"validate #{attribute}_confirmation is different than #{attribute}\" do"
+      :was_run: false
+    - :content: "           model = Factory.build(factory, bad_confirmation_options(attribute))"
+      :was_run: false
+    - :content: "           model.save"
+      :was_run: false
+    - :content: "           assert_confirmation_error(model, attribute, "
+      :was_run: false
+    - :content: "             \"#{attribute}_confirmation cannot be different than #{attribute}\")"
+      :was_run: false
+    - :content: "         end"
+      :was_run: false
+    - :content: "       end"
+      :was_run: false
+    - :content: "   "
+      :was_run: true
+    - :content: "       # FORMS"
+      :was_run: true
+    - :content: "   "
+      :was_run: true
+    - :content: "       def should_display_a_password_update_form"
+      :was_run: true
+    - :content: "         warn \"[DEPRECATION] should_display_a_password_update_form: not meant to be public, no longer used internally\""
+      :was_run: true
+    - :content: "         should \"have a form for the user's token, password, and password confirm\" do"
+      :was_run: true
+    - :content: "           update_path = ERB::Util.h("
+      :was_run: true
+    - :content: "             user_password_path(@user, :token => @user.token)"
+      :was_run: true
+    - :content: "           )"
+      :was_run: true
+    - :content: "   "
+      :was_run: true
+    - :content: "           assert_select 'form[action=?]', update_path do"
+      :was_run: true
+    - :content: "             assert_select 'input[name=_method][value=?]', 'put'"
+      :was_run: true
+    - :content: "             assert_select 'input[name=?]', 'user[password]'"
+      :was_run: true
+    - :content: "             assert_select 'input[name=?]', 'user[password_confirmation]'"
+      :was_run: true
+    - :content: "           end"
+      :was_run: true
+    - :content: "         end"
+      :was_run: true
+    - :content: "       end"
+      :was_run: true
+    - :content: "   "
+      :was_run: true
+    - :content: "       def should_display_a_sign_up_form"
+      :was_run: true
+    - :content: "         warn \"[DEPRECATION] should_display_a_sign_up_form: not meant to be public, no longer used internally\""
+      :was_run: true
+    - :content: "         should \"display a form to sign up\" do"
+      :was_run: true
+    - :content: "           assert_select \"form[action=#{users_path}][method=post]\","
+      :was_run: true
+    - :content: "           true, \"There must be a form to sign up\" do"
+      :was_run: true
+    - :content: "             assert_select \"input[type=text][name=?]\","
+      :was_run: true
+    - :content: "               \"user[email]\", true, \"There must be an email field\""
+      :was_run: true
+    - :content: "             assert_select \"input[type=password][name=?]\","
+      :was_run: true
+    - :content: "               \"user[password]\", true, \"There must be a password field\""
+      :was_run: true
+    - :content: "             assert_select \"input[type=password][name=?]\","
+      :was_run: true
+    - :content: "               \"user[password_confirmation]\", true, \"There must be a password confirmation field\""
+      :was_run: true
+    - :content: "             assert_select \"input[type=submit]\", true,"
+      :was_run: true
+    - :content: "               \"There must be a submit button\""
+      :was_run: true
+    - :content: "           end"
+      :was_run: true
+    - :content: "         end"
+      :was_run: true
+    - :content: "       end"
+      :was_run: true
+    - :content: "   "
+      :was_run: true
+    - :content: "       def should_display_a_sign_in_form"
+      :was_run: true
+    - :content: "         warn \"[DEPRECATION] should_display_a_sign_in_form: not meant to be public, no longer used internally\""
+      :was_run: true
+    - :content: "         should 'display a \"sign in\" form' do"
+      :was_run: true
+    - :content: "           assert_select \"form[action=#{session_path}][method=post]\","
+      :was_run: true
+    - :content: "             true, \"There must be a form to sign in\" do"
+      :was_run: true
+    - :content: "               assert_select \"input[type=text][name=?]\","
+      :was_run: true
+    - :content: "                 \"session[email]\", true, \"There must be an email field\""
+      :was_run: true
+    - :content: "               assert_select \"input[type=password][name=?]\","
+      :was_run: true
+    - :content: "                 \"session[password]\", true, \"There must be a password field\""
+      :was_run: true
+    - :content: "               assert_select \"input[type=checkbox][name=?]\","
+      :was_run: true
+    - :content: "                 \"session[remember_me]\", true, \"There must be a 'remember me' check box\""
+      :was_run: true
+    - :content: "               assert_select \"input[type=submit]\", true,"
+      :was_run: true
+    - :content: "                 \"There must be a submit button\""
+      :was_run: true
+    - :content: "           end"
+      :was_run: true
+    - :content: "         end"
+      :was_run: true
+    - :content: "       end"
+      :was_run: true
+    - :content: "     end"
+      :was_run: true
+    - :content: "   end"
+      :was_run: true
+    - :content: "   "
+      :was_run: true
+    - :content: "   module Clearance"
+      :was_run: true
+    - :content: "     module Shoulda"
+      :was_run: true
+    - :content: "       module Helpers"
+      :was_run: true
+    - :content: "         def sign_in_as(user)"
+      :was_run: true
+    - :content: "           @controller.class_eval { attr_accessor :current_user }"
+      :was_run: true
+    - :content: "           @controller.current_user = user"
+      :was_run: true
+    - :content: "           return user"
+      :was_run: true
+    - :content: "         end"
+      :was_run: true
+    - :content: "   "
+      :was_run: true
+    - :content: "         def sign_in"
+      :was_run: true
+    - :content: "           sign_in_as Factory(:email_confirmed_user)"
+      :was_run: true
+    - :content: "         end"
+      :was_run: true
+    - :content: "   "
+      :was_run: true
+    - :content: "         def sign_out"
+      :was_run: true
+    - :content: "           @controller.class_eval { attr_accessor :current_user }"
+      :was_run: true
+    - :content: "           @controller.current_user = nil"
+      :was_run: true
+    - :content: "         end"
+      :was_run: true
+    - :content: "   "
+      :was_run: true
+    - :content: "         def blank_confirmation_options(attribute)"
+      :was_run: true
+    - :content: "           warn \"[DEPRECATION] blank_confirmation_options: not meant to be public, no longer used internally\""
+      :was_run: false
+    - :content: "           opts = { attribute => attribute.to_s }"
+      :was_run: false
+    - :content: "           opts.merge(\"#{attribute}_confirmation\".to_sym => \"\")"
+      :was_run: false
+    - :content: "         end"
+      :was_run: false
+    - :content: "   "
+      :was_run: true
+    - :content: "         def bad_confirmation_options(attribute)"
+      :was_run: true
+    - :content: "           warn \"[DEPRECATION] bad_confirmation_options: not meant to be public, no longer used internally\""
+      :was_run: false
+    - :content: "           opts = { attribute => attribute.to_s }"
+      :was_run: false
+    - :content: "           opts.merge(\"#{attribute}_confirmation\".to_sym => \"not_#{attribute}\")"
+      :was_run: false
+    - :content: "         end"
+      :was_run: false
+    - :content: "   "
+      :was_run: true
+    - :content: "         def assert_confirmation_error(model, attribute, message = \"confirmation error\")"
+      :was_run: true
+    - :content: "           warn \"[DEPRECATION] assert_confirmation_error: not meant to be public, no longer used internally\""
+      :was_run: false
+    - :content: "           assert model.errors.on(attribute).include?(\"doesn't match confirmation\"),"
+      :was_run: false
+    - :content: "             message"
+      :was_run: false
+    - :content: "         end"
+      :was_run: false
+    - :content: "       end"
+      :was_run: false
+    - :content: "     end"
+      :was_run: false
+    - :content: "   end"
+      :was_run: false
+    - :content: "   "
+      :was_run: true
+    - :content: "   class Test::Unit::TestCase"
+      :was_run: true
+    - :content: "     include Clearance::Shoulda::Helpers"
+      :was_run: true
+    - :content: "   end"
+      :was_run: true
+    - :content: "   Test::Unit::TestCase.extend(Clearance::Shoulda)"
+      :was_run: true
+:roodi: 
+  :problems: 
+  - :file: lib/clearance/authentication.rb
+    :problem: Found = in conditional.  It should probably be an ==
+    :line: "32"
+  - :file: lib/clearance/authentication.rb
+    :problem: Found = in conditional.  It should probably be an ==
+    :line: "38"
+  - :file: lib/clearance/authentication.rb
+    :problem: Found = in conditional.  It should probably be an ==
+    :line: "39"
+  - :file: lib/clearance/user.rb
+    :problem: Found = in conditional.  It should probably be an ==
+    :line: "137"
+  :total: 
+  - Found 4 errors.
