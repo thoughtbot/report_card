@@ -1,5 +1,5 @@
 module ReportCard
-  class Runner
+  class Grader
     attr_reader :project, :config, :scores, :old_scores
 
     def initialize(project, config)
@@ -7,7 +7,7 @@ module ReportCard
       @config = config
     end
 
-    def run
+    def grade
       return unless ready?
       STDERR.puts ">> Building metrics for #{project.name}"
       configure

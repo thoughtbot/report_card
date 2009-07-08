@@ -3,18 +3,18 @@ require 'metric_fu'
 require 'tinder'
 
 $:.unshift(File.dirname(__FILE__))
-require 'report_card/runner'
+require 'report_card/grader'
 
 module ReportCard
   CONFIG_FILE = "config.yml"
 
-  def self.run
+  def self.grade
     Integrity.new(config['integrity_config'])
 
     ignore = config['ignore'] ? Regexp.new(config['ignore']) : /[^\w\d\s]+/
 
     Integrity::Project.all.each do |project|
-      ReportCard::Runner.new(project, config).run if project.name !~ ignore
+      ReportCard::Grader.new(project, config).grade if project.name !~ ignore
     end
   end
 

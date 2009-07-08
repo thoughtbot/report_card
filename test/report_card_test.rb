@@ -1,7 +1,7 @@
 require 'test_helper'
 
 class ReportCardTest < Test::Unit::TestCase
-  context "running report_card" do
+  context "grading report_card" do
     setup do
       @config = {'integrity_config' => '/path/to/integrity/config.yml'}
       stub(ReportCard).config { @config }
@@ -9,23 +9,23 @@ class ReportCardTest < Test::Unit::TestCase
       @project = Integrity::Project.new
     end
 
-    should "run if project name is valid" do
+    should "grade if project name is valid" do
       stub(@project).name { "awesome" }
 
       mock(Integrity).new(@config['integrity_config'])
       mock(Integrity::Project).all.mock!.each.yields(@project)
-      mock(ReportCard::Runner).new(@project, @config).mock!.run
-      ReportCard.run
+      mock(ReportCard::Grader).new(@project, @config).mock!.grade
+      ReportCard.grade
     end
 
-    should "not run if project name is ignored" do
+    should "not grade if project name is ignored" do
       @config['ignore'] = "1\.9"
       stub(@project).name { "awesome 1.9" }
 
       mock(Integrity).new(@config['integrity_config'])
       mock(Integrity::Project).all.mock!.each.yields(@project)
-      mock(ReportCard::Runner).new(@project, @config).never
-      ReportCard.run
+      mock(ReportCard::Grader).new(@project, @config).never
+      ReportCard.grade
     end
   end
 
