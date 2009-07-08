@@ -1,10 +1,10 @@
 require 'test_helper'
 
-class PythagorasTest < Test::Unit::TestCase
-  context "running pythagoras" do
+class ReportCardTest < Test::Unit::TestCase
+  context "running report_card" do
     setup do
       @config = {'integrity_config' => '/path/to/integrity/config.yml'}
-      stub(Pythagoras).config { @config }
+      stub(ReportCard).config { @config }
 
       @project = Integrity::Project.new
     end
@@ -14,8 +14,8 @@ class PythagorasTest < Test::Unit::TestCase
 
       mock(Integrity).new(@config['integrity_config'])
       mock(Integrity::Project).all.mock!.each.yields(@project)
-      mock(Pythagoras::Runner).new(@project, @config).mock!.run
-      Pythagoras.run
+      mock(ReportCard::Runner).new(@project, @config).mock!.run
+      ReportCard.run
     end
 
     should "not run if project name is ignored" do
@@ -24,8 +24,8 @@ class PythagorasTest < Test::Unit::TestCase
 
       mock(Integrity).new(@config['integrity_config'])
       mock(Integrity::Project).all.mock!.each.yields(@project)
-      mock(Pythagoras::Runner).new(@project, @config).never
-      Pythagoras.run
+      mock(ReportCard::Runner).new(@project, @config).never
+      ReportCard.run
     end
   end
 
@@ -35,29 +35,29 @@ class PythagorasTest < Test::Unit::TestCase
     end
 
     should "load if file exists" do
-      mock(File).exist?(Pythagoras::CONFIG_FILE) { true }
-      mock(YAML).load_file(Pythagoras::CONFIG_FILE) { @config }
-      assert_equal @config, Pythagoras.config
+      mock(File).exist?(ReportCard::CONFIG_FILE) { true }
+      mock(YAML).load_file(ReportCard::CONFIG_FILE) { @config }
+      assert_equal @config, ReportCard.config
     end
 
     should "not load if file does not exist" do
-      mock(File).exist?(Pythagoras::CONFIG_FILE) { false }
-      mock(YAML).load_file(Pythagoras::CONFIG_FILE).never
+      mock(File).exist?(ReportCard::CONFIG_FILE) { false }
+      mock(YAML).load_file(ReportCard::CONFIG_FILE).never
       mock(Kernel).abort(anything)
-      Pythagoras.config
+      ReportCard.config
     end
   end
 
   context "setting up" do
     setup do
       @config = {'site' => '/path/to/site'}
-      stub(Pythagoras).config { @config }
+      stub(ReportCard).config { @config }
     end
 
     should "move files from the template over" do
       mock(FileUtils).mkdir_p(@config['site'])
       mock(FileUtils).cp(is_a(Array), @config['site'])
-      Pythagoras.setup
+      ReportCard.setup
     end
   end
 end

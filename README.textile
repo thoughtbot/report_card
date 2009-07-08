@@ -1,4 +1,4 @@
-h1. Pythagoras
+h1. report_card
 
 Automatic building and reporting to campfire of metrics with metric_fu through integrity.
 
@@ -6,7 +6,6 @@ h2. Features
 
 * Generates an entire metric_fu site for you based on your integrity projects
 * Notifies campfire of metric stats given that they have changed since the last run
-* Calculates the hypotenuse of a triangle
 
 h2. Requirements
 
@@ -22,7 +21,7 @@ It's probably best to do this on a cron job.
 
 h2. Setup
 
-Have a config.yml file in your pythagoras directory with the following info:
+Have a config.yml file in your report_card directory with the following info:
 
 <pre>
 
@@ -30,7 +29,7 @@ Have a config.yml file in your pythagoras directory with the following info:
 integrity_config: /home/ci/integrity/config.yml
 
 # Where you want the site to be placed that metric_fu creates
-site: /home/ci/pythagoras/_site
+site: /home/ci/report_card/_site
 
 # A regular expression for project names you wish to ignore
 ignore: '[^shoulda]|1\.9'

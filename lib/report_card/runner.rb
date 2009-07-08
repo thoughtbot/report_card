@@ -1,4 +1,4 @@
-module Pythagoras
+module ReportCard
   class Runner
     attr_reader :project, :config, :scores, :old_scores
 

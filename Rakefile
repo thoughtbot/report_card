@@ -5,17 +5,17 @@ task :default => :test
 
 desc "Generate metrics"
 task :generate do
-  require 'lib/pythagoras'
-  Pythagoras.run
+  require 'lib/report_card'
+  ReportCard.run
 end
 
 begin
   require 'jeweler'
   Jeweler::Tasks.new do |gem|
-    gem.name = "pythagoras"
+    gem.name = "report_card"
     gem.summary = %Q{Automatic building and reporting of metrics with metric_fu through integrity}
     gem.email = "nick@quaran.to"
-    gem.homepage = "http://github.com/thoughtbot/pythagoras"
+    gem.homepage = "http://github.com/thoughtbot/report_card"
     gem.authors = ["Nick Quaranto"]
     # gem is a Gem::Specification... see http://www.rubygems.org/read/chapter/20 for additional settings
   end
@@ -54,7 +54,7 @@ Rake::RDocTask.new do |rdoc|
   end
 
   rdoc.rdoc_dir = 'rdoc'
-  rdoc.title = "pythagoras #{version}"
+  rdoc.title = "report_card #{version}"
   rdoc.rdoc_files.include('README*')
   rdoc.rdoc_files.include('lib/**/*.rb')
 end

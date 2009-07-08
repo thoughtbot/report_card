@@ -6,7 +6,7 @@ class RunnerTest < Test::Unit::TestCase
       @project = Integrity::Project.new(:name => "awesome")
       @config = {'url'  => 'http://metrics.thoughtbot.com',
                  'site' => '/path/to/site'}
-      @runner = Pythagoras::Runner.new(@project, @config)
+      @runner = ReportCard::Runner.new(@project, @config)
       stub(STDERR).puts(anything)
     end
 

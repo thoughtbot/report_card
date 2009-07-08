@@ -3,9 +3,9 @@ require 'metric_fu'
 require 'tinder'
 
 $:.unshift(File.dirname(__FILE__))
-require 'pythagoras/runner'
+require 'report_card/runner'
 
-module Pythagoras
+module ReportCard
   CONFIG_FILE = "config.yml"
 
   def self.run
@@ -14,7 +14,7 @@ module Pythagoras
     ignore = config['ignore'] ? Regexp.new(config['ignore']) : /[^\w\d\s]+/
 
     Integrity::Project.all.each do |project|
-      Pythagoras::Runner.new(project, config).run if project.name !~ ignore
+      ReportCard::Runner.new(project, config).run if project.name !~ ignore
     end
   end
 
