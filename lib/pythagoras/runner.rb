@@ -33,8 +33,9 @@ module Pythagoras
       ENV['CC_BUILD_ARTIFACTS'] = self.output_path
       MetricFu::Configuration.run do |config|
         config.reset
+        config.data_directory = self.archive_path
         config.template_class = AwesomeTemplate
-        config.metrics  = [:flog, :flay, :rcov, :reek, :roodi]
+        config.metrics = config.graphs = [:flog, :flay, :rcov, :reek, :roodi]
         config.rcov     = { :test_files => ['test/**/*_test.rb', 'spec/**/*_spec.rb'],
                             :rcov_opts  => ["--sort coverage",
                             "--no-html",
@@ -51,8 +52,14 @@ module Pythagoras
     def generate
       begin
         MetricFu.metrics.each { |metric| MetricFu.report.add(metric) }
+        MetricFu.graphs.each  { |graph| MetricFu.graph.add(graph) }
+
         MetricFu.report.save_output(MetricFu.report.to_yaml, MetricFu.base_directory, 'report.yml')
+        MetricFu.report.save_output(MetricFu.report.to_yaml, MetricFu.data_directory, "#{Time.now.strftime("%Y%m%d")}.yml")
         MetricFu.report.save_templatized_report
+
+        MetricFu.graph.generate
+
         @success = true
       rescue Exception => e
         STDERR.puts "Problem generating the reports: #{e}"

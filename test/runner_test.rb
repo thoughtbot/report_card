@@ -118,8 +118,9 @@ class RunnerTest < Test::Unit::TestCase
       config = "config"
       mock(config).reset
       mock(config).template_class = AwesomeTemplate
-      mock(config).metrics = [:flog, :flay, :rcov, :reek, :roodi]
+      mock(config).metrics = mock(config).graphs = [:flog, :flay, :rcov, :reek, :roodi]
       mock(config).rcov = anything
+      mock(config).data_directory = @runner.archive_path
 
       mock.proxy(MetricFu::Configuration).run.yields(config)
       @runner.configure
@@ -132,19 +133,29 @@ class RunnerTest < Test::Unit::TestCase
       end
 
       should "successfully generate output" do
-        metric = "metric"
-        report = "report"
+        Timecop.freeze(Date.today) do
+          metric = "metric"
+          report = "report"
+          graph  = "graph"
+          one_graph = "one_graph"
 
-        mock(report).add(metric)
-        mock(report).save_templatized_report
-        mock(report).to_yaml { "yaml" }
-        mock(report).save_output("yaml", MetricFu.base_directory, "report.yml")
+          mock(report).add(metric)
+          mock(report).save_templatized_report
+          mock(report).to_yaml { "yaml" }.twice
+          mock(report).save_output("yaml", MetricFu.base_directory, "report.yml")
+          mock(report).save_output("yaml", MetricFu.data_directory, "#{Time.now.strftime("%Y%m%d")}.yml")
 
-        stub(MetricFu).report { report }
-        mock(MetricFu).metrics.stub!.each.yields(metric)
+          stub(MetricFu).report { report }
+          mock(MetricFu).metrics.stub!.each.yields(metric)
 
-        @runner.generate
-        assert @runner.success?
+          mock(graph).add(one_graph)
+          mock(graph).generate
+          stub(MetricFu).graph  { graph }
+          mock(MetricFu).graphs.stub!.each.yields(one_graph)
+
+          @runner.generate
+          assert @runner.success?
+        end
       end
 
       should "be unsuccessful if some problem arises" do
