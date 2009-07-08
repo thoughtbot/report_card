@@ -25,4 +25,9 @@ module Pythagoras
       Kernel.abort("You need a config file. Check the readme please!")
     end
   end
+
+  def self.setup
+    FileUtils.mkdir_p(config['site'])
+    FileUtils.cp(Dir[File.join(File.dirname(__FILE__), '..', 'template', '*.{css,ico}')], config['site'])
+  end
 end

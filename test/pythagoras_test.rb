@@ -47,4 +47,17 @@ class PythagorasTest < Test::Unit::TestCase
       Pythagoras.config
     end
   end
+
+  context "setting up" do
+    setup do
+      @config = {'site' => '/path/to/site'}
+      stub(Pythagoras).config { @config }
+    end
+
+    should "move files from the template over" do
+      mock(FileUtils).mkdir_p(@config['site'])
+      mock(FileUtils).cp(is_a(Array), @config['site'])
+      Pythagoras.setup
+    end
+  end
 end
