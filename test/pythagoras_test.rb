@@ -2,57 +2,49 @@ require 'test_helper'
 
 class PythagorasTest < Test::Unit::TestCase
   context "running pythagoras" do
-    before_should "load data from integrity" do
-      @config = {'integrity_config' => 'config path'}
-      mock(YAML).load_file("config.yml") { @config }
-      mock(Integrity).new(@config['integrity_config'])
-
-      @project = Integrity::Project.new
-      stub(@project).name { "awesome" }
-      mock(Integrity::Project).all { [@project] }
-      mock(Pythagoras::Runner).new(@project, @config).mock!.run
-    end
-
-    before_should "dump out if no config file" do
-      mock(YAML).load_file("config.yml") { raise "no way" }
-      mock(STDERR).puts(anything)
-
-      mock(Integrity).new(anything).never
-      mock(Pythagoras).new(anything).never
-    end
-
-    before_should "dump out if blank config file" do
-      mock(YAML).load_file("config.yml") { false }
-      mock(STDERR).puts(anything)
-
-      mock(Integrity).new(anything).never
-      mock(Pythagoras).new(anything).never
-    end
-
-    # TODO: Need a better way to check for this.
-    # before_should "dump out if no projects" do
-    #   @config = {'integrity_config' => 'config path'}
-    #   mock(YAML).load_file("config.yml") { @config }
-    #   mock(Integrity).new(@config['integrity_config'])
-
-    #   mock(Integrity::Project).all { raise Sqlite3Error }
-    #   mock(STDERR).puts(anything)
-    #   mock(Pythagoras).new(anything).never
-    # end
-
-    before_should "ignore projects based on ignore in config" do
-      @config = {'integrity_config' => 'config path', 'ignore' => '1\.9'}
-      mock(YAML).load_file("config.yml") { @config }
-      mock(Integrity).new(@config['integrity_config'])
-
-      @project = Integrity::Project.new
-      stub(@project).name { "awesome 1.9" }
-      mock(Integrity::Project).all { [@project] }
-      mock(Pythagoras).new(anything).never
-    end
-
     setup do
+      @config = {'integrity_config' => '/path/to/integrity/config.yml'}
+      stub(Pythagoras).config { @config }
+
+      @project = Integrity::Project.new
+    end
+
+    should "run if project name is valid" do
+      stub(@project).name { "awesome" }
+
+      mock(Integrity).new(@config['integrity_config'])
+      mock(Integrity::Project).all.mock!.each.yields(@project)
+      mock(Pythagoras::Runner).new(@project, @config).mock!.run
       Pythagoras.run
+    end
+
+    should "not run if project name is ignored" do
+      @config['ignore'] = "1\.9"
+      stub(@project).name { "awesome 1.9" }
+
+      mock(Integrity).new(@config['integrity_config'])
+      mock(Integrity::Project).all.mock!.each.yields(@project)
+      mock(Pythagoras::Runner).new(@project, @config).never
+      Pythagoras.run
+    end
+  end
+
+  context "loading the config" do
+    setup do
+      @config = {'integrity_config' => '/path/to/integrity/config.yml'}
+    end
+
+    should "load if file exists" do
+      mock(File).exist?(Pythagoras::CONFIG_FILE) { true }
+      mock(YAML).load_file(Pythagoras::CONFIG_FILE) { @config }
+      assert_equal @config, Pythagoras.config
+    end
+
+    should "not load if file does not exist" do
+      mock(File).exist?(Pythagoras::CONFIG_FILE) { false }
+      mock(YAML).load_file(Pythagoras::CONFIG_FILE).never
+      mock(Kernel).abort(anything)
+      Pythagoras.config
     end
   end
 end

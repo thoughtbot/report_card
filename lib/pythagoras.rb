@@ -9,29 +9,20 @@ module Pythagoras
   CONFIG_FILE = "config.yml"
 
   def self.run
-    begin
-      config = YAML.load_file(CONFIG_FILE)
-    rescue Exception => e
-      STDERR.puts "There was a problem reading your #{CONFIG_FILE} file: #{e}"
-      return
-    end
-
-    if config
-      Integrity.new(config['integrity_config'])
-    else
-      STDERR.puts "Your config file is blank."
-      return
-    end
+    Integrity.new(config['integrity_config'])
 
     ignore = config['ignore'] ? Regexp.new(config['ignore']) : /[^\w\d\s]+/
 
-    #begin
-      Integrity::Project.all.each do |project|
-        Pythagoras::Runner.new(project, config).run if project.name !~ ignore
-      end
-    #rescue Exception => e
-      #STDERR.puts "There was a problem loading your projects from integrity: #{e}"
-      #return
-    #end
+    Integrity::Project.all.each do |project|
+      Pythagoras::Runner.new(project, config).run if project.name !~ ignore
+    end
+  end
+
+  def self.config
+    if File.exist?(CONFIG_FILE)
+      @config ||= YAML.load_file(CONFIG_FILE)
+    else
+      Kernel.abort("You need a config file. Check the readme please!")
+    end
   end
 end
