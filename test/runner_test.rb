@@ -224,14 +224,16 @@ class RunnerTest < Test::Unit::TestCase
         end
 
         should "add to archive" do
-          archive = "archive"
-          mock(archive)[DateTime.now.to_s] = @runner.scores
+          Timecop.freeze(Date.today) do
+            archive = "archive"
+            mock(archive)[DateTime.now.to_s] = @runner.scores
 
-          mock(File).exist?(@runner.archive_path) { true }
-          mock(YAML).load_file(@runner.archive_path) { archive }
-          mock(File).open(@runner.archive_path, "w")
+            mock(File).exist?(@runner.archive_path) { true }
+            mock(YAML).load_file(@runner.archive_path) { archive }
+            mock(File).open(@runner.archive_path, "w")
 
-          @runner.archive
+            @runner.archive
+          end
         end
 
         should "set and create archive if it does not exist" do
