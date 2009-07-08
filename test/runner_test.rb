@@ -36,17 +36,15 @@ class RunnerTest < Test::Unit::TestCase
       @runner.run
     end
 
-    should "score, archive, and notify when wrapping up" do
+    should "score and notify when wrapping up" do
       mock(@runner).score
-      mock(@runner).archive
       mock(@runner).score_changed? { true }
       mock(@runner).notify
       @runner.wrapup
     end
 
-    should "score, archive, and not notify when wrapping up and the score hasn't changed" do
+    should "score and not notify when wrapping up and the score hasn't changed" do
       mock(@runner).score
-      mock(@runner).archive
       mock(@runner).score_changed? { false }
       mock(@runner).notify.never
       @runner.wrapup
@@ -221,31 +219,6 @@ class RunnerTest < Test::Unit::TestCase
           should "return false for score_changed?" do
             assert ! @runner.score_changed?
           end
-        end
-
-        should "add to archive" do
-          Timecop.freeze(Date.today) do
-            archive = "archive"
-            mock(archive)[DateTime.now.to_s] = @runner.scores
-
-            mock(File).exist?(@runner.archive_path) { true }
-            mock(YAML).load_file(@runner.archive_path) { archive }
-            mock(File).open(@runner.archive_path, "w")
-
-            @runner.archive
-          end
-        end
-
-        should "set and create archive if it does not exist" do
-          #archive = "archive"
-          #mock(archive)[DateTime.now.to_s] = @runner.scores
-
-          mock(File).exist?(@runner.archive_path) { false }
-          mock(YAML).load_file(anything).never
-          mock(FileUtils).mkdir_p(File.dirname(@runner.archive_path))
-          mock(File).open(@runner.archive_path, "w")
-
-          @runner.archive
         end
 
         should "skip notification if config value is there" do

@@ -17,7 +17,6 @@ module Pythagoras
 
     def wrapup
       score
-      archive
       notify if score_changed?
     end
 
@@ -83,20 +82,6 @@ module Pythagoras
 
       File.open(self.scores_path, "w") do |f|
         f.write @scores.to_yaml
-      end
-    end
-
-    def archive
-      if File.exist?(self.archive_path)
-        archive = YAML.load_file(archive_path)
-      else
-        FileUtils.mkdir_p(File.dirname(self.archive_path))
-        archive = {}
-      end
-
-      archive[DateTime.now.to_s] = self.scores
-      File.open(self.archive_path, 'w') do |f|
-        f.write archive.to_yaml
       end
     end
 
