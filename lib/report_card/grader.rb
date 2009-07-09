@@ -9,7 +9,6 @@ module ReportCard
 
     def grade
       return unless ready?
-      STDERR.puts ">> Building metrics for #{project.name}"
       configure
       generate
       wrapup if success?
@@ -23,6 +22,7 @@ module ReportCard
     def ready?
       dir = Integrity::ProjectBuilder.new(project).send(:export_directory)
       if File.exist?(dir)
+        STDERR.puts ">> Building metrics for #{project.name}"
         Dir.chdir dir
       else
         STDERR.puts ">> Skipping, directory does not exist: #{dir}"
