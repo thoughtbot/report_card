@@ -3,10 +3,10 @@ require 'rake'
 
 task :default => :test
 
-desc "Generate metrics"
-task :generate do
+desc "Grade your projects."
+task :grade do
   require 'lib/report_card'
-  ReportCard.run
+  ReportCard.grade
 end
 
 begin
