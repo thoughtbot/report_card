@@ -14,7 +14,11 @@ class ReportCardTest < Test::Unit::TestCase
 
       mock(Integrity).new(@config['integrity_config'])
       mock(Integrity::Project).all.mock!.each.yields(@project)
-      mock(ReportCard::Grader).new(@project, @config).mock!.grade
+
+      grader = "grader"
+      mock(grader).grade
+      mock(grader).success? { true }
+      mock(ReportCard::Grader).new(@project, @config) { grader }
       ReportCard.grade
     end
 

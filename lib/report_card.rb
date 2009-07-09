@@ -1,8 +1,10 @@
+$:.unshift(File.dirname(__FILE__))
+
 require 'integrity'
 require 'metric_fu'
 require 'tinder'
 
-$:.unshift(File.dirname(__FILE__))
+require 'report_card/index'
 require 'report_card/grader'
 
 module ReportCard
@@ -12,9 +14,14 @@ module ReportCard
     Integrity.new(config['integrity_config'])
 
     ignore = config['ignore'] ? Regexp.new(config['ignore']) : /[^\w\d\s]+/
+    projects = []
 
     Integrity::Project.all.each do |project|
-      ReportCard::Grader.new(project, config).grade if project.name !~ ignore
+      if project.name !~ ignore
+        grader = Grader.new(project, config)
+        grader.grade
+        projects << project if grader.success?
+      end
     end
   end
 
