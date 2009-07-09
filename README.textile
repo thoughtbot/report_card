@@ -4,27 +4,26 @@ Automatic building and reporting to campfire of metrics with metric_fu through i
 
 h2. Features
 
-* Generates an entire metric_fu site for you based on your integrity projects
+* Generates metric_fu sites for each project and ties them together on one page
 * Notifies campfire of metric stats given that they have changed since the last run
 
 h2. Requirements
 
-* An Integrity setup.
+* integrity installed
 * metric_fu
 * tinder
 
 h2. Usage
 
-Run @rake generate@.
+Run: @rake grade@
 
-It's probably best to do this on a cron job.
+Note: It's probably best to do this on a cron job.
 
 h2. Setup
 
-Have a config.yml file in your report_card directory with the following info:
+Have a @config.yml@ file in your report_card directory with the following info:
 
 <pre>
-
 # This is the path to integrity's config.yml file.
 integrity_config: /home/ci/integrity/config.yml
 
@@ -32,6 +31,7 @@ integrity_config: /home/ci/integrity/config.yml
 site: /home/ci/report_card/_site
 
 # A regular expression for project names you wish to ignore
+# You need to surround this with quotes since YAML is picky
 ignore: '[^shoulda]|1\.9'
 
 # The location of your site, for campfire reporting
@@ -40,7 +40,6 @@ url: http://metrics.thoughtbot.com
 # Set to true if you would like to skip notifying campfire when metrics have changed
 skip_notification: false
 </pre>
-
 
 h2. Thanks
 
