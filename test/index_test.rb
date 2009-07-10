@@ -12,8 +12,8 @@ class IndexTest < Test::Unit::TestCase
     end
 
     should "split up public and private projects" do
-      mock(ReportCard::Index).new([@public_project1, @public_project2], @site)
-      mock(ReportCard::Index).new([@private_project], File.join(@site, "private"))
+      mock(ReportCard::Index).new([@public_project1, @public_project2], @site, anything)
+      mock(ReportCard::Index).new([@private_project], File.join(@site, "private"), anything)
 
       ReportCard::Index.create(@projects, @site)
     end
@@ -28,14 +28,16 @@ class IndexTest < Test::Unit::TestCase
       mock(ERB).new(erb).mock!.result(anything) { html }
       mock(File).open(File.join(@site, "index.html"), "w").yields(io)
 
-      ReportCard::Index.new([@private_project], @site)
+      index = ReportCard::Index.new([@private_project], @site, "footer")
+      assert_equal [@private_project], index.projects
+      assert_equal "footer", index.footer
     end
 
     should "not write out anything if there's no projects" do
       mock(File).read(anything).never
       mock(ERB).new(anything).never
       mock(File).open(anything, "w").never
-      ReportCard::Index.new([], @site)
+      ReportCard::Index.new([], @site, "footer")
     end
   end
 end
