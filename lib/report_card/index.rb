@@ -8,6 +8,8 @@ module ReportCard
     end
 
     def initialize(projects, path)
+      return if projects.empty?
+
       @projects = projects
 
       erb = File.read(TEMPLATE_PATH)

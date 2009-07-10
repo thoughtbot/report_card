@@ -30,5 +30,12 @@ class IndexTest < Test::Unit::TestCase
 
       ReportCard::Index.new([@private_project], @site)
     end
+
+    should "not write out anything if there's no projects" do
+      mock(File).read(anything).never
+      mock(ERB).new(anything).never
+      mock(File).open(anything, "w").never
+      ReportCard::Index.new([], @site)
+    end
   end
 end
