@@ -13,6 +13,7 @@ module ReportCard
 
   def self.grade
     Integrity.new(config['integrity_config'])
+    self.setup
 
     ignore = config['ignore'] ? Regexp.new(config['ignore']) : /[^\w\d\s]+/
     projects = []

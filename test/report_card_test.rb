@@ -14,6 +14,7 @@ class ReportCardTest < Test::Unit::TestCase
       stub(@project).name { "awesome" }
 
       mock(Integrity).new(@config['integrity_config'])
+      mock(ReportCard).setup
       mock(Integrity::Project).all.mock!.each.yields(@project)
 
       grader = "grader"
@@ -29,6 +30,7 @@ class ReportCardTest < Test::Unit::TestCase
       stub(@project).name { "awesome 1.9" }
 
       mock(Integrity).new(@config['integrity_config'])
+      mock(ReportCard).setup
       mock(Integrity::Project).all.mock!.each.yields(@project)
       mock(ReportCard::Grader).new(@project, @config).never
       mock(ReportCard::Index).create(anything, anything).never
