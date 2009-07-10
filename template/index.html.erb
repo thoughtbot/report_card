@@ -19,27 +19,11 @@
     </div>
     <div id='content'>
       <ul id='projects'>
-        <li class='even success'>
-          <a href='/clearance/output'>clearance</a>
-        </li>
-        <li class='odd success'>
-          <a href='/factory_girl/output'>factory_girl</a>
-        </li>
-        <li class='even success'>
-          <a href='/hoptoad_notifier/output'>hoptoad_notifier</a>
-        </li>
-        <li class='odd success'>
-          <a href='/pacecar/output'>pacecar</a>
-        </li>
-        <li class='even success'>
-          <a href='/paperclip/output'>paperclip</a>
-        </li>
-        <li class='odd success'>
-          <a href='/shoulda/output'>shoulda</a>
-        </li>
-        <li class='even success'>
-          <a href='/squirrel/output'>squirrel</a>
-        </li>
+        <% @projects.each do |project| %>
+          <li class='even success'>
+            <a href='/<%= project.name %>/output'><%= project.name %></a>
+          </li>
+        <% end %>
       </ul>
     </div>
     <div id="footer">
