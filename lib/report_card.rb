@@ -3,6 +3,7 @@ $:.unshift(File.dirname(__FILE__))
 require 'integrity'
 require 'metric_fu'
 require 'tinder'
+require 'erb'
 
 require 'report_card/index'
 require 'report_card/grader'
@@ -23,6 +24,8 @@ module ReportCard
         projects << project if grader.success?
       end
     end
+
+    Index.create(projects, config['site']) unless projects.empty?
   end
 
   def self.config

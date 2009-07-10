@@ -3,7 +3,8 @@ require 'test_helper'
 class ReportCardTest < Test::Unit::TestCase
   context "grading report_card" do
     setup do
-      @config = {'integrity_config' => '/path/to/integrity/config.yml'}
+      @config = {'integrity_config' => '/path/to/integrity/config.yml',
+                 'site'             => '/path/to/site'}
       stub(ReportCard).config { @config }
 
       @project = Integrity::Project.new
@@ -19,6 +20,7 @@ class ReportCardTest < Test::Unit::TestCase
       mock(grader).grade
       mock(grader).success? { true }
       mock(ReportCard::Grader).new(@project, @config) { grader }
+      mock(ReportCard::Index).create([@project], @config['site'])
       ReportCard.grade
     end
 
@@ -29,6 +31,7 @@ class ReportCardTest < Test::Unit::TestCase
       mock(Integrity).new(@config['integrity_config'])
       mock(Integrity::Project).all.mock!.each.yields(@project)
       mock(ReportCard::Grader).new(@project, @config).never
+      mock(ReportCard::Index).create(anything, anything).never
       ReportCard.grade
     end
   end
