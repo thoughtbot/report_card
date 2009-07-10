@@ -9,7 +9,7 @@ require 'report_card/index'
 require 'report_card/grader'
 
 module ReportCard
-  CONFIG_FILE = "config.yml"
+  CONFIG_FILE = File.expand_path(File.join(File.dirname(__FILE__), "..", "config.yml"))
 
   def self.grade
     Integrity.new(config['integrity_config'])
@@ -32,7 +32,7 @@ module ReportCard
     if File.exist?(CONFIG_FILE)
       @config ||= YAML.load_file(CONFIG_FILE)
     else
-      Kernel.abort("You need a config file. Check the readme please!")
+      Kernel.abort("You need a config file at #{CONFIG_FILE}. Check the readme please!")
     end
   end
 
