@@ -12,12 +12,32 @@ h2. Requirements
 * integrity installed
 * metric_fu
 * tinder
+* your favorite webserver
 
 h2. Usage
 
 Run: @rake grade@
 
 Note: It's probably best to do this on a cron job.
+
+If you're running private projects, make sure to configure your webserver to block
+others from looking at your results. If you're using Apache to host your report_card
+site, here's what your VirtualHost could look like:
+
+<pre>
+<VirtualHost *:80>
+  ServerName  metrics.thoughtbot.com
+  DocumentRoot /home/ci/report_card/_site
+
+  <DirectoryMatch /home\/ci\/report_card\/_site\/(archive|private|scores)>
+    AuthName "Metrics"
+    AuthUserFile /home/ci/.htpasswd
+    AuthGroupFile /dev/null
+    AuthType basic
+    require valid-user
+  </DirectoryMatch>
+</VirtualHost>
+</pre>
 
 h2. Setup
 
