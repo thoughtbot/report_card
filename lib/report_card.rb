@@ -16,7 +16,7 @@ module ReportCard
     Integrity.new(config['integrity_config'])
     self.setup
 
-    ignore = config['ignore'] ? Regexp.new(config['ignore']) : /[^\w\d\s]+/
+    ignore = config['ignore'] ? Regexp.new(config['ignore']) : /[^\w\d\s\S]+/
     projects = []
 
     Integrity::Project.all.each do |project|
