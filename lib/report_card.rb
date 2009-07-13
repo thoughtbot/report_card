@@ -1,5 +1,6 @@
 $:.unshift(File.dirname(__FILE__))
 
+gem 'integrity', '0.1.9.3'
 require 'integrity'
 require 'metric_fu'
 require 'tinder'
