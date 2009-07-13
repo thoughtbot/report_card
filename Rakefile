@@ -1,7 +1,7 @@
 require 'rubygems'
 require 'rake'
 
-task :default => :test
+task :default => [:test, :features]
 
 desc "Grade your projects."
 task :grade do
@@ -59,3 +59,15 @@ Rake::RDocTask.new do |rdoc|
   rdoc.rdoc_files.include('lib/**/*.rb')
 end
 
+begin
+  require 'cucumber/rake/task'
+
+  Cucumber::Rake::Task.new(:features) do |t|
+    t.cucumber_opts = "--format progress"
+  end
+rescue LoadError
+  desc 'Cucumber rake task not available'
+  task :features do
+    abort 'Cucumber rake task is not available. Be sure to install cucumber as a gem or plugin'
+  end
+end
