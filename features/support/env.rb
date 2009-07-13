@@ -1,18 +1,16 @@
 require 'test/unit'
 require 'report_card'
 
-TEST_DIR = File.join('/', 'tmp', 'report_card')
+TEST_DIR = File.expand_path(File.join(File.dirname(__FILE__), '..', '..'))
+INTEGRITY_DIR = File.join(TEST_DIR, 'integrity')
+INTEGRITY_CONFIG = File.join(INTEGRITY_DIR, 'config.yml')
 
 World do
   include Test::Unit::Assertions
 end
 
-Before do
-  FileUtils.mkdir(TEST_DIR)
-#  Dir.chdir(TEST_DIR)
-end
-
 After do
-#  Dir.chdir(TEST_DIR)
-  FileUtils.rm_rf(TEST_DIR)
+  FileUtils.rm_rf(INTEGRITY_DIR)
+  FileUtils.rm_rf(File.join(TEST_DIR, '_site'))
+  FileUtils.rm_rf(File.join(TEST_DIR, 'config.yml'))
 end

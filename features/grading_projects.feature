@@ -4,12 +4,10 @@ Feature: Grading projects
   In order to improve it and make it awesome
 
   Scenario: Grading public projects
-    Given I have integrity setup in the "integrity" directory
-    And I have a public integrity project called "factory_girl"
-    And I have a public integrity project called "clearance"
-    And I have a configuration file with "url" set to "http://metrics.thoughtbot.com"
-    And I have a configuration file with "integrity_config" set to "integrity/config.yml"
-    And I have a configuration file with "site" set to "_site"
+    Given I have integrity setup
+    And I have a public integrity project named "factory_girl"
+    And I have a public integrity project named "clearance"
+    And I have a basic site configuration
 
     When I run "rake grade"
 
@@ -22,13 +20,11 @@ Feature: Grading projects
     And the template files should exist in "_site"
 
   Scenario: Grading public and private projects
-    Given I have integrity setup in the "integrity" directory
-    And I have a public integrity project called "factory_girl"
-    And I have a public integrity project called "clearance"
-    And I have a private integrity project called "paperclip"
-    And I have a configuration file with "url" set to "http://metrics.thoughtbot.com"
-    And I have a configuration file with "integrity_config" set to "integrity/config.yml"
-    And I have a configuration file with "site" set to "_site"
+    Given I have integrity setup
+    And I have a public integrity project named "factory_girl"
+    And I have a public integrity project named "clearance"
+    And I have a private integrity project named "paperclip"
+    And I have a basic site configuration
 
     When I run "rake grade"
 

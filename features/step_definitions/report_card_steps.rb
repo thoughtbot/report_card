@@ -1,32 +1,49 @@
-Given /^I have integrity setup in the "([^\"]*)" directory$/ do |dir|
-  `integrity install #{File.join(TEST_DIR, dir)}`
-  `integrity migrate_db #{File.join(TEST_DIR, dir, "config.yml")}`
+Given /^I have integrity setup/ do
+  `integrity install #{INTEGRITY_DIR}`
+  `integrity migrate_db #{INTEGRITY_CONFIG}`
 end
 
-Given /^I have a (private|public) integrity project called "([^\"]*)"$/ do |access, name|
-  pending
+Given /^I have a (private|public) integrity project named "([^\"]*)"$/ do |access, name|
+  Integrity.new(INTEGRITY_CONFIG)
+  project = Integrity::Project.create(:name => name,
+                                      :uri => "git://github.com/thoughtbot/#{name}",
+                                      :public => (access == "public"))
+  print project.build
 end
 
 Given /^I have a configuration file with "([^\"]*)" set to "([^\"]*)"$/ do |key, value|
-  pending
+  File.open(File.join(TEST_DIR, 'config.yml'), 'a') do |f|
+    f.write("#{key}: #{value}\n")
+    f.close
+  end
 end
 
+Given /^I have a basic site configuration$/ do
+  Given %{I have a configuration file with "url" set to "http://metrics.thoughtbot.com"}
+  And   %{I have a configuration file with "integrity_config" set to "integrity/config.yml"}
+  And   %{I have a configuration file with "site" set to "_site"}
+end
+
+
 When /^I run "([^\"]*)"$/ do |command|
-  pending
+  print `#{command} --trace`
 end
 
 Then /^the "([^\"]*)" file should exist$/ do |name|
-  pending
+  assert File.file?(file)
 end
 
 Then /^I should see "([^\"]*)" in "([^\"]*)"$/ do |text, file|
-  pending
+  assert_match Regexp.new(text), File.read(file)
 end
 
 Then /^the "([^\"]*)" directory should exist$/ do |name|
-  pending
+  assert File.directory?(dir)
 end
 
 Then /^the template files should exist in "([^\"]*)"$/ do |dir|
-  pending
+  Then %{the "_site/buttons.css" file should exist"}
+  And  %{the "_site/reset.css" file should exist"}
+  And  %{the "_site/integrity.css" file should exist"}
+  And  %{the "_site/favicon.ico" file should exist"}
 end
