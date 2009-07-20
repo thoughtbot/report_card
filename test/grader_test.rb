@@ -80,7 +80,7 @@ class GraderTest < Test::Unit::TestCase
       should "have an announcement message for notification" do
         message = @grader.message
         assert_match "New metrics", message
-        assert_match "#{@config['url']}/#{@project.name}/output", message
+        assert_match "#{@project.name}/output", message
       end
 
       should "use _site/:project for output_path" do
@@ -96,7 +96,7 @@ class GraderTest < Test::Unit::TestCase
       should "have an announcement message for notification" do
         message = @grader.message
         assert_match "New metrics", message
-        assert_match "#{@config['url']}/private/#{@project.name}/output", message
+        assert_match "private/#{@project.name}/output", message
       end
 
       should "use _site/private/:project for output_path" do

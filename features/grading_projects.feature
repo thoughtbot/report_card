@@ -14,7 +14,6 @@ Feature: Grading projects
     Then the "_site/index.html" file should exist
     And I should see "factory_girl" in "_site/index.html"
     And I should see "clearance" in "_site/index.html"
-    And I should see "http://metrics.thoughtbot.com" in "_site/index.html"
     And the "_site/clearance/output" directory should exist
     And the "_site/factory_girl/output" directory should exist
     And the template files should exist in "_site"
@@ -31,7 +30,6 @@ Feature: Grading projects
     Then the "_site/index.html" file should exist
     And I should see "factory_girl" in "_site/index.html"
     And I should see "clearance" in "_site/index.html"
-    And I should see "http://metrics.thoughtbot.com" in "_site/index.html"
     And the "_site/clearance/output" directory should exist
     And the "_site/factory_girl/output" directory should exist
     And the "_site/private/index.html" file should exist
