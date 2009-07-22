@@ -9,21 +9,6 @@ task :grade do
   ReportCard.grade
 end
 
-begin
-  require 'jeweler'
-  Jeweler::Tasks.new do |gem|
-    gem.name = "report_card"
-    gem.summary = %Q{Automatic building and reporting of metrics with metric_fu through integrity}
-    gem.email = "nick@quaran.to"
-    gem.homepage = "http://github.com/thoughtbot/report_card"
-    gem.authors = ["Nick Quaranto"]
-    # gem is a Gem::Specification... see http://www.rubygems.org/read/chapter/20 for additional settings
-  end
-
-rescue LoadError
-  puts "Jeweler (or a dependency) not available. Install it with: sudo gem install jeweler"
-end
-
 require 'rake/testtask'
 Rake::TestTask.new(:test) do |test|
   test.libs << 'lib' << 'test'
