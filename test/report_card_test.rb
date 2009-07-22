@@ -5,6 +5,7 @@ class ReportCardTest < Test::Unit::TestCase
     setup do
       @config = {'integrity_config' => '/path/to/integrity/config.yml',
                  'site'             => '/path/to/site'}
+      stub(Integrity).new
       stub(ReportCard).config { @config }
 
       @project = Integrity::Project.new

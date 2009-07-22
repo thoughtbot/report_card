@@ -1,10 +1,7 @@
-Before do
+Given /^I have integrity setup/ do
   FileUtils.rm_rf(INTEGRITY_DIR)
   FileUtils.rm_rf(File.join(TEST_DIR, '_site'))
   FileUtils.rm_rf(File.join(TEST_DIR, 'config.yml'))
-end
-
-Given /^I have integrity setup/ do
   `integrity install #{INTEGRITY_DIR}`
   `integrity migrate_db #{INTEGRITY_CONFIG}`
 end
@@ -32,7 +29,7 @@ end
 
 
 When /^I run "([^\"]*)"$/ do |command|
-  print `cd #{TEST_DIR}; #{command} --trace`
+  `cd #{TEST_DIR}; #{command} --trace`
 end
 
 Then /^the "([^\"]*)" file should exist$/ do |name|
