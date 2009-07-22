@@ -9,7 +9,7 @@ h2. Features
 
 h2. Requirements
 
-* integrity installed
+* integrity v0.1.10
 * metric_fu
 * tinder
 * your favorite webserver
@@ -60,6 +60,21 @@ url: http://metrics.thoughtbot.com
 # Set to true if you would like to skip notifying campfire when metrics have changed
 skip_notification: false
 </pre>
+
+h2. Testing
+
+Run the test suite with @rake@.
+
+There's a cucumber integration test that is run with @cucumber@. This isn't exactly fast since it:
+
+# Sets up integrity
+# Adds projects into integrity
+# Clones them from github
+# Builds the project's tests
+# Runs metric_fu on the project's tests
+# Generates the report_card site.
+
+However, it should all pass and work. If not, open up an issue!
 
 h2. Thanks
 
