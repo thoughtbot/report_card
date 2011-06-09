@@ -1,3 +1,9 @@
+h1. DEPRECATED
+
+Thoughtbot is no longer supporting this project. We haven't used Integrity in a while, and report_card is deeply tied to it.
+
+However, we still recommend "metric_fu":http://metric-fu.rubyforge.org/, which has only gotten more robust over the years. You may also want to check out the "Hudson metric_fu plugin.":http://blog.josephwilk.net/ruby/ruby-metric-fu-hudson-plugin.html
+
 h1. report_card
 
 Automatic building and reporting to campfire of metrics with metric_fu through integrity.
